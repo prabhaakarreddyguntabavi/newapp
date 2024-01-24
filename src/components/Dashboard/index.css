@@ -1,0 +1,23 @@
+.bar-chart {
+  color: #718ebf;
+  text-align: right;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.credit-transction {
+  width: 70px;
+  height: 234px;
+  flex-shrink: 0;
+}
+
+.debit-transction {
+  width: 70px;
+  height: 234px;
+  flex-shrink: 0;
+  color: black;
+  border-radius: 30px;
+}

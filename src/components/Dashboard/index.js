@@ -1,5 +1,13 @@
 // import { useState, useEffect } from "react";
 
+import React from "react";
+import {
+  Chart,
+  Series,
+  CommonSeriesSettings,
+  Legend,
+} from "devextreme-react/chart";
+
 import SideBar from "../SideBar";
 import Header from "../Header";
 
@@ -25,7 +33,14 @@ import {
   CrediteDebitImage,
   EditImage,
   DeleteImage,
+  TitleParagraph,
+  CategaryParagraph,
+  DateOfTransctionParagraph,
+  CrediteDebitAmount,
+  BarChartContainer,
 } from "./styledComponents";
+
+import "./index.css";
 
 // const apiStatusConstants = {
 //   initial: "INITIAL",
@@ -82,6 +97,39 @@ const Dashboard = () => {
     }
   };*/
 
+  const grossProductData = [
+    {
+      state: "Illinois",
+      year2016: 803,
+      year2017: 823,
+      year2018: 863,
+    },
+    {
+      state: "Indiana",
+      year2016: 316,
+      year2017: 332,
+      year2018: 332,
+    },
+    {
+      state: "Michigan",
+      year2016: 452,
+      year2017: 459,
+      year2018: 470,
+    },
+    {
+      state: "Ohio",
+      year2016: 621,
+      year2017: 642,
+      year2018: 675,
+    },
+    {
+      state: "Wisconsin",
+      year2016: 290,
+      year2017: 294,
+      year2018: 301,
+    },
+  ];
+
   return (
     <DashboardMainContainer>
       <SideBar />
@@ -122,23 +170,93 @@ const Dashboard = () => {
                 src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/Group_328_hbywun.png"
                 alt="image"
               />
-              <p>Sportify Subscription</p>
-              <p>Shopping</p>
-              <p>28 Jan, 10.40 AM</p>
-              <p>-$150</p>
-              <div>
-                <EditImage
-                  src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/pencil-02_lbbupq.png"
-                  alt="edit"
-                />
+              <TitleParagraph>Sportify Subscription</TitleParagraph>
+              <CategaryParagraph>Shopping</CategaryParagraph>
+              <DateOfTransctionParagraph>
+                28 Jan, 10.40 AM
+              </DateOfTransctionParagraph>
+              <CrediteDebitAmount>-$150</CrediteDebitAmount>
+              <EditImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/pencil-02_lbbupq.png"
+                alt="edit"
+              />
 
-                <DeleteImage
-                  src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/trash-01_uaykhq.png"
-                  alt="delete"
-                />
-              </div>
+              <DeleteImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/trash-01_uaykhq.png"
+                alt="delete"
+              />
+            </DachTransctionContainer>
+            <DachTransctionContainer>
+              <CrediteDebitImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/Group_328_hbywun.png"
+                alt="image"
+              />
+              <TitleParagraph>Sportify Subscription</TitleParagraph>
+              <CategaryParagraph>Shopping</CategaryParagraph>
+              <DateOfTransctionParagraph>
+                28 Jan, 10.40 AM
+              </DateOfTransctionParagraph>
+              <CrediteDebitAmount>-$150</CrediteDebitAmount>
+              <EditImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/pencil-02_lbbupq.png"
+                alt="edit"
+              />
+
+              <DeleteImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/trash-01_uaykhq.png"
+                alt="delete"
+              />
+            </DachTransctionContainer>
+            <DachTransctionContainer>
+              <CrediteDebitImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/Group_328_hbywun.png"
+                alt="image"
+              />
+              <TitleParagraph>Sportify Subscription</TitleParagraph>
+              <CategaryParagraph>Shopping</CategaryParagraph>
+              <DateOfTransctionParagraph>
+                28 Jan, 10.40 AM
+              </DateOfTransctionParagraph>
+              <CrediteDebitAmount>-$150</CrediteDebitAmount>
+              <EditImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/pencil-02_lbbupq.png"
+                alt="edit"
+              />
+
+              <DeleteImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/trash-01_uaykhq.png"
+                alt="delete"
+              />
             </DachTransctionContainer>
           </LastThreeTransctions>
+          <LastTransction>Debit & Credit Overview</LastTransction>
+          <BarChartContainer>
+            <Chart
+              className="bar-chart"
+              majorGridLines={{ visible: false }}
+              id="chart"
+              dataSource={grossProductData}
+            >
+              <Legend
+                verticalAlignment="bottom"
+                horizontalAlignment="center"
+              ></Legend>
+              <CommonSeriesSettings
+                argumentField="state"
+                type="bar"
+              ></CommonSeriesSettings>
+              <Series
+                className="credit-transction"
+                argumentField="state"
+                valueField="year2018"
+              />
+              <Series
+                className="debit-transction"
+                fill="#4D78FF"
+                valueField="year2017"
+              />
+            </Chart>
+          </BarChartContainer>
         </BodyContainer>
       </BodyMainContainer>
     </DashboardMainContainer>
