@@ -2,23 +2,12 @@ import styled from "styled-components";
 
 export const HeaderMainContainer = styled.div`
   display: flex;
-  // width: 79vw;
+  width: 1190px;
   padding: 24px 40px;
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  height: 5vh;
-
-  @media screen and (max-width: 1000px) {
-    // width: 92%;
-  }
-
-  @media screen and (max-width: 768px) {
-    // width: 100vw;
-    padding: 0px;
-    height: 8vh;
-    justify-content: space-between;
-  }
+  height: 35px;
 `;
 
 export const AddTransactionButton = styled.button`
@@ -28,7 +17,7 @@ export const AddTransactionButton = styled.button`
   align-items: center;
   gap: 4px;
   border-radius: 12px;
-  background: ${(props) => (props.disabled ? "#dddddd" : "#2d60ff")};
+  background: #2d60ff;
   color: #fff;
   text-align: center;
   font-family: Inter;
@@ -37,10 +26,6 @@ export const AddTransactionButton = styled.button`
   font-weight: 500;
   line-height: normal;
   border-width: 0px;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const ButtonImage = styled.img`
@@ -55,10 +40,6 @@ export const ButtonText = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const AddTransctionMainContainer = styled.div`
@@ -70,7 +51,7 @@ export const AddTransctionMainContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const AddTransctionContainer = styled.form`
+export const AddTransctionContainer = styled.div`
   width: 466px;
   height: 700px;
   flex-shrink: 0;
@@ -78,16 +59,11 @@ export const AddTransctionContainer = styled.form`
   background: #fff;
   margin: auto;
   aline-self: center;
-
-  @media screen and (max-width: 768px) {
-    width: 466px;
-    height: 700px;
-  }
 `;
 
 export const AddTransctionButton = styled.button`
   display: flex;
-  width: 418px;
+  width: 90%;
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
@@ -106,10 +82,6 @@ export const AddTransctionButton = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 142.857% */
-
-  @media screen and (max-width: 768px) {
-    width: 90vw;
-  }
 `;
 
 export const AddTransctionTextContainer = styled.div`
@@ -159,7 +131,6 @@ export const AddTransctionInputContainer = styled.div`
   margin-left: 24px;
   margin-right: 24px;
   margin-bottom: 20px;
-
   @media screen and (max-width: 768px) {
     margin-left: 15px;
   }
@@ -212,71 +183,10 @@ export const LoadingContainer = styled.div`
   margin: auto;
 `;
 
-export const MobileLogoImage = styled.img`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-    width: 40%;
-    margin-left: 10px;
-  }
-`;
-export const MobileHeaderProfile = styled.div`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: flex;
-    width: 35px;
-    height: 45px;
-    margin-left: 10px;
-    border-radius: 200px;
-    margin-right: 10px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-`;
-export const MobilePopupContainer = styled.div`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
-    background: rgba(52, 64, 84, 0.7);
-    backdrop-filter: blur(8px);
-  }
-`;
-
-export const MobileParagraph = styled.p`
-  font-size: 25px;
-`;
-
-export const MobileAddTransactions = styled.button`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: ${(props) => (props.disabled ? "none" : "flex")};
-    padding: 8px 12px;
-    background-color: transparent;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    border-radius: 12px;
-    // background: #2d60ff;
-    color: #000;
-    text-align: center;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    border-width: 0px;
-  }
-`;
-
-export const ErrorMessageParagraph = styled.div`
-  color: red;
-  font-size: 12px;
-  margin-left: 30px;
-  margin-top: 7px;
-`;
+// export const AddTransctionContainer = styled.div``;
+// export const AddTransctionContainer = styled.div``;
+// export const AddTransctionContainer = styled.div``;
+// export const AddTransctionContainer = styled.div``;
+// export const AddTransctionContainer = styled.div``;
+// export const AddTransctionContainer = styled.div``;
 // export const AddTransctionContainer = styled.div``;

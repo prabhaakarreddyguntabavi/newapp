@@ -4,15 +4,10 @@ import Cookies from "js-cookie";
 import Popup from "reactjs-popup";
 import { useNavigate } from "react-router-dom";
 
-import SideBar from "../SideBar";
-import Header from "../Header";
-import TransctionContext from "../../context/TransctionContext";
 import UpdateTransaction from "../UpdateTransaction";
 import DeleteTransaction from "../DeleteTransaction";
 
 import {
-  TransactionHomePage,
-  TransactionTotalBodyContainer,
   TransctionsContainer,
   DachTransctionContainer,
   CrediteDebitImage,
@@ -21,21 +16,9 @@ import {
   DateOfTransctionParagraph,
   EditImage,
   DeleteImage,
-  TransactionBodyContainer,
-  SelectFilterConditions,
-  TransctionSelectFilter,
-  SelectAllOption,
-  SelectedContainer,
-  SelectOption,
-  SelectedCreditContainer,
-  TransactionName,
-  TransactionCategory,
-  TransactionDate,
-  TransactionAmount,
   CrediteAmount,
   DebitAmount,
   LoadingContainer,
-  HeadingDachTransctionContainer,
   NoTransactionsFountHeading,
   AddTransctionContainer,
   AddTransctionMainContainer,
@@ -46,7 +29,6 @@ import {
   AddTransctionCloseImage,
   LogoutContainer,
   AdminProfileContainer,
-  TransactionUserName,
   UserProfileDetails,
   TitleUserParagraph,
   Div,
@@ -62,7 +44,9 @@ const apiStatusConstants = {
   failure: "FAILURE",
 };
 
-const TransactionPage = () => {
+const TransactionPage = (props) => {
+  const { callApi, lastThreeTransactions } = props;
+
   const jwtToken = Cookies.get("jwt_token");
   const navigate = useNavigate();
 
@@ -71,11 +55,11 @@ const TransactionPage = () => {
     data: null,
   });
 
+  const callTransactionsUpdate = (id) => {
+    lastThreeTransactions(id);
+  };
+
   const [allProfileDetails, setProfileDetailsApiResponse] = useState([]);
-
-  const [filterOption, onChangeFilter] = useState("alltransactions");
-
-  const [callApi, updateApi] = useState("");
 
   const DateFormate = (date) => {
     const inputDateString = date;
@@ -156,7 +140,7 @@ const TransactionPage = () => {
           setProfileDetailsApiResponse(outPut.users);
         }
 
-        const limit = 1000;
+        const limit = 10000;
         const offset = 0;
 
         const queryParams = `?limit=${limit}&offset=${offset}`;
@@ -170,11 +154,13 @@ const TransactionPage = () => {
         const responseData = await response.json();
 
         if (response.ok) {
+          const ListOfTransactions = responseData.transactions.sort(
+            (a, b) => b.id - a.id
+          );
+
           setApiResponse({
             status: apiStatusConstants.success,
-            data: [...responseData.transactions].sort(
-              (a, b) => new Date(b.date) - new Date(a.date)
-            ),
+            data: ListOfTransactions.slice(0, 3),
           });
         } else {
           setApiResponse({
@@ -189,41 +175,13 @@ const TransactionPage = () => {
     }
   }, [navigate, jwtToken, callApi]);
 
-  const callTransactionsUpdate = (id) => {
-    updateApi(id);
-  };
-
   const renderSuccessView = () => {
     const { data } = apiResponse;
-
     let transctionsData = data;
-    if (filterOption !== "alltransactions") {
-      transctionsData = data.filter(
-        (eachTransctionData) =>
-          eachTransctionData.type.toUpperCase() === filterOption.toUpperCase()
-      );
-    }
+
     if (transctionsData.length !== 0) {
       return (
         <>
-          <HeadingDachTransctionContainer>
-            {jwtToken === "3" ? (
-              <TransactionUserName>User Name</TransactionUserName>
-            ) : (
-              ""
-            )}
-            <TransactionName isAdmin={jwtToken === "3"}>
-              Transaction Name
-            </TransactionName>
-            <TransactionCategory isAdmin={jwtToken === "3"}>
-              Category
-            </TransactionCategory>
-            <TransactionDate isAdmin={jwtToken === "3"}>Date</TransactionDate>
-            <TransactionAmount isAdmin={jwtToken === "3"}>
-              Amount
-            </TransactionAmount>
-          </HeadingDachTransctionContainer>
-
           {transctionsData.map((eachTransaction) => {
             const user = allProfileDetails.find(
               (findUser) => findUser.id === eachTransaction.user_id
@@ -235,13 +193,13 @@ const TransactionPage = () => {
                     {eachTransaction.type === "credit" ? (
                       <CrediteDebitImage
                         isAdmin={jwtToken === "3"}
-                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_1_idrnjp.png"
+                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706166669/Ellipse_21_bdfznp.png"
                         alt="image"
                       />
                     ) : (
                       <CrediteDebitImage
                         isAdmin={jwtToken === "3"}
-                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_oztkbu.png"
+                        src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/Group_328_hbywun.png"
                         alt="image"
                       />
                     )}
@@ -264,13 +222,13 @@ const TransactionPage = () => {
                       {eachTransaction.type === "credit" ? (
                         <CrediteDebitImage
                           isAdmin={jwtToken === "3"}
-                          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_1_idrnjp.png"
+                          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706166669/Ellipse_21_bdfznp.png"
                           alt="image"
                         />
                       ) : (
                         <CrediteDebitImage
                           isAdmin={jwtToken === "3"}
-                          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_oztkbu.png"
+                          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705900717/Group_328_hbywun.png"
                           alt="image"
                         />
                       )}
@@ -288,7 +246,7 @@ const TransactionPage = () => {
                     </TransctionParagraphMobile>
                   </div>
                 </Div>
-                <CategaryParagraph isAdmin={jwtToken === "3"}>
+                <CategaryParagraph>
                   {eachTransaction.category}
                 </CategaryParagraph>
                 <DateOfTransctionParagraph>
@@ -430,87 +388,8 @@ const TransactionPage = () => {
     }
   };
   if (jwtToken !== undefined) {
-    return (
-      <TransctionContext.Consumer>
-        {(value) => {
-          const {
-            transactionOption,
-            onChangeTransactionOption,
-            selectOption,
-            onChangeSelectOption,
-          } = value;
-
-          if (selectOption !== "TRANSACTIONS") {
-            onChangeSelectOption("TRANSACTIONS");
-          }
-
-          return (
-            <TransactionHomePage>
-              <SideBar />
-              <TransactionTotalBodyContainer>
-                <Header updateApi={updateApi} />
-                <SelectFilterConditions>
-                  <TransctionSelectFilter
-                    onClick={() => {
-                      onChangeTransactionOption("ALLTRNSACTION");
-                      onChangeFilter("alltransactions");
-                    }}
-                  >
-                    <SelectAllOption
-                      transactionOption={transactionOption === "ALLTRNSACTION"}
-                    >
-                      All Transction
-                    </SelectAllOption>
-                    <SelectedContainer
-                      transactionOption={transactionOption === "ALLTRNSACTION"}
-                    ></SelectedContainer>
-                  </TransctionSelectFilter>
-
-                  <TransctionSelectFilter
-                    onClick={() => {
-                      onChangeTransactionOption("CREDIT");
-                      onChangeFilter("credit");
-                    }}
-                  >
-                    <SelectOption
-                      transactionOption={transactionOption === "CREDIT"}
-                    >
-                      Credit
-                    </SelectOption>
-                    <SelectedCreditContainer
-                      transactionOption={transactionOption === "CREDIT"}
-                    ></SelectedCreditContainer>
-                  </TransctionSelectFilter>
-
-                  <TransctionSelectFilter
-                    onClick={() => {
-                      onChangeTransactionOption("DEBIT");
-                      onChangeFilter("debit");
-                    }}
-                  >
-                    <SelectOption
-                      transactionOption={transactionOption === "DEBIT"}
-                    >
-                      Debit
-                    </SelectOption>
-                    <SelectedCreditContainer
-                      transactionOption={transactionOption === "DEBIT"}
-                    ></SelectedCreditContainer>
-                  </TransctionSelectFilter>
-                </SelectFilterConditions>
-                <TransactionBodyContainer>
-                  <TransctionsContainer>
-                    {renderLeaderboard()}
-                  </TransctionsContainer>
-                </TransactionBodyContainer>
-              </TransactionTotalBodyContainer>
-            </TransactionHomePage>
-          );
-        }}
-      </TransctionContext.Consumer>
-    );
+    return <TransctionsContainer>{renderLeaderboard()}</TransctionsContainer>;
   }
-  return null;
 };
 
 export default TransactionPage;

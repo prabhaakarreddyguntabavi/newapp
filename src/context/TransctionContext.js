@@ -5,6 +5,10 @@ const TransctionContext = React.createContext({
   onChangeSelectOption: () => {},
   transactionOption: "ALLTRNSACTION",
   onChangeTransactionOption: () => {},
+  isUserAdmin: false,
+  onChangeIsAdmin: () => {},
+  userDict: {},
+  updateReactDict: () => {},
 });
 
 export default TransctionContext;

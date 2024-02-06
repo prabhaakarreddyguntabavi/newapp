@@ -1,22 +1,11 @@
 import styled from "styled-components";
 
 export const SideBarMainContainer = styled.div`
-  width: 15vw;
-  height: 100%;
+  width: 250px;
+  height: 950px;
   flex-shrink: 0;
   border-right: 1px solid #e2e2e2;
   background: #fff;
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (max-width: 1000px) {
-    width: 7vw;
-    height: 99vh;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 export const IconsImage = styled.img`
   width: 25px;
@@ -43,7 +32,7 @@ export const TextParagraph = styled.p`
 
 export const EachTextContainer = styled.div`
   display: flex;
-  width: 210px;
+  width: 207px;
   height: 60px;
   justify-content: flex-start;
   align-items: center;
@@ -63,9 +52,6 @@ export const LogoImage = styled.img`
   display: inline-flex;
   align-items: center;
   margin: 20px;
-  @media screen and (max-width: 1000px) {
-    width: 20vw;
-  }
 `;
 
 export const SelectedContainer = styled.div`
@@ -78,17 +64,13 @@ export const SelectedContainer = styled.div`
 `;
 
 export const ProfileContainer = styled.div`
-  margin-top: auto;
+  margin-top: 550px;
   display: flex;
   padding: 24px 32px 0px 24px;
   align-items: center;
   gap: 10px;
   align-self: stretch;
   border-top: 1px solid #eaecf0;
-
-  @media screen and (max-width: 1000px) {
-    padding: 0px;
-  }
 `;
 
 export const ProfileImageContainer = styled.div`
@@ -100,25 +82,6 @@ export const ProfileImageContainer = styled.div`
   align-items: center;
   border-radius: 200px;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-
-export const ProfileImageContainerMedium = styled.div`
-  display: none;
-  width: 40px;
-  height: 40px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 200px;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-  @media screen and (max-width: 1000px) {
-    display: flex;
-    margin-top: 10px;
-    margin-right: 8px;
-  }
 `;
 
 export const ProfileName = styled.h1`
@@ -130,8 +93,6 @@ export const ProfileName = styled.h1`
   font-weight: 600;
   line-height: 20px; /* 142.857% */
   margin: 0px;
-  width: 100px;
-  overflow: hidden;
 `;
 
 export const ProfileEmail = styled.p`
@@ -142,8 +103,6 @@ export const ProfileEmail = styled.p`
   font-weight: 400;
   line-height: 20px; /* 142.857% */
   margin: 0px;
-  width: 150px;
-  overflow: hidden;
 `;
 
 export const ProfileTextContainer = styled.div`
@@ -151,9 +110,6 @@ export const ProfileTextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 10px;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 `;
 
 export const ProfileLogoutImage = styled.img`
@@ -163,10 +119,6 @@ export const ProfileLogoutImage = styled.img`
   right: 16px;
   bottom: 20px;
   margin-left: auto;
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 `;
 
 export const LogoutButton = styled.button`
@@ -186,8 +138,8 @@ export const LogoutContainer = styled.div`
 `;
 
 export const LogoutConformationContainer = styled.div`
-  width: 591px;
-  height: 188px;
+  width: auto;
+  // height: 26vh;
   flex-shrink: 0;
   border-radius: 16px;
   background: #fff;
@@ -197,6 +149,11 @@ export const LogoutConformationContainer = styled.div`
   /* Shadow / lg */
   box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.05),
     0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 768px) {
+    width: 95vw;
+    // height: 36vh;
+  }
 `;
 
 export const WarningImageContainer = styled.div`

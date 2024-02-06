@@ -2,6 +2,8 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
+import TransctionContext from "../../context/TransctionContext";
+
 import {
   LoginLabel,
   EmailInput,
@@ -29,18 +31,26 @@ const userDetails = [
   { email: "arjun@gmail.com", password: "arjun@123", userId: 15 },
   { email: "radha@gmail.com", password: "radha@123", userId: 16 },
   { email: "phani@gmail.com", password: "phani@123", userId: 17 },
-  { email: "admin@gmail.com", password: "Admin@123", userId: "Admin" },
+  { email: "admin@gmail.com", password: "Admin@123", userId: 3 },
 ];
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const [emailId, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [onEnterEmailDict, setEmailDict] = useState({});
+  const [onEnterEmailDict, setEmailDict] = useState({
+    email: "",
+    password: "",
+    userId: 0,
+  });
   const navigate = useNavigate();
 
   const onEnterEmailId = () => {
-    setEmailDict(userDetails.find((eachId) => eachId.email === emailId));
+    if (emailId !== "") {
+      const EmailDict = userDetails.find((eachId) => eachId.email === emailId);
+
+      setEmailDict(EmailDict);
+    }
   };
 
   const onChangeEmailID = (event) => onChangeEmail(event.target.value);
@@ -48,7 +58,9 @@ const LoginForm = (props) => {
   const onChangePas = (event) => onChangePassword(event.target.value);
 
   const onLoginField = () => {
-    if (emailId === "") {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!pattern.test(emailId)) {
       setErrorMessage("Please Enter Email");
     } else if (password === "") {
       setErrorMessage("Please Enter Password");
@@ -71,49 +83,54 @@ const LoginForm = (props) => {
   };
 
   const jwtToken = Cookies.get("jwt_token");
-  console.log(jwtToken);
 
   if (jwtToken !== undefined) {
     navigate("/");
   }
   return (
-    <LoginContainer>
-      <LoginFormContainer className="form-container">
-        <LogoImage
-          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705580146/Frame_507_ba197a.png"
-          alt="website logo"
-        />
-        <InputContainer>
-          <LoginLabel className="input-label" htmlFor="emailId">
-            Email
-          </LoginLabel>
-          <EmailInput
-            type="email"
-            id="emailId"
-            value={emailId}
-            onChange={onChangeEmailID}
-            onBlur={onEnterEmailId}
-            placeholder="Email"
-          />
-        </InputContainer>
-        <InputContainer>
-          <LoginLabel htmlFor="password">PASSWORD</LoginLabel>
-          <PasswordInput
-            type="password"
-            id="password"
-            value={password}
-            onChange={onChangePas}
-            placeholder="Password"
-          />
-        </InputContainer>
-        <LoginButton type="button" onClick={onLoginField}>
-          Login
-        </LoginButton>
-        {errorMessage && (
-          <ErrorMessageParagraph>*{errorMessage}</ErrorMessageParagraph>
-        )}
-      </LoginFormContainer>
-    </LoginContainer>
+    <TransctionContext.Consumer>
+      {(value) => {
+        return (
+          <LoginContainer>
+            <LoginFormContainer className="form-container">
+              <LogoImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705580146/Frame_507_ba197a.png"
+                alt="website logo"
+              />
+              <InputContainer>
+                <LoginLabel className="input-label" htmlFor="emailId">
+                  Email
+                </LoginLabel>
+                <EmailInput
+                  type="email"
+                  id="emailId"
+                  value={emailId}
+                  onChange={onChangeEmailID}
+                  onBlur={() => onEnterEmailId()}
+                  placeholder="Email"
+                />
+              </InputContainer>
+              <InputContainer>
+                <LoginLabel htmlFor="password">PASSWORD</LoginLabel>
+                <PasswordInput
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={onChangePas}
+                  placeholder="Password"
+                />
+              </InputContainer>
+              <LoginButton type="button" onClick={onLoginField}>
+                Login
+              </LoginButton>
+              {errorMessage && (
+                <ErrorMessageParagraph>*{errorMessage}</ErrorMessageParagraph>
+              )}
+            </LoginFormContainer>
+          </LoginContainer>
+        );
+      }}
+    </TransctionContext.Consumer>
   );
 };
 

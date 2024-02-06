@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Popup from "reactjs-popup";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -18,23 +17,10 @@ import {
   ProfileImageContainer,
   ProfileName,
   ProfileEmail,
-  ProfileLogoutImage,
   ProfileTextContainer,
-  LogoutButton,
-  LogoutConformationContainer,
-  LogoutContainer,
-  WarningImageContainer,
-  WarningImage,
-  TextImageContainer,
-  HeaderTextImageContainer,
-  LogoutHeading,
-  LogoutClosingImage,
-  LogoutParagraph,
-  TestContainer,
-  LogoutButtonContainer,
-  CancelLogoutButton,
   YesLogoutButton,
-  ProfileImageContainerMedium,
+  MobileSideBarClosing,
+  PopupClosingContainer,
 } from "./styledComponents";
 
 import "./index.css";
@@ -57,7 +43,8 @@ const userDetails = [
   { email: "admin@gmail.com", password: "Admin@123", userId: 3 },
 ];
 
-const SideBar = () => {
+const MobileSideBar = (props) => {
+  const { close } = props;
   const jwtToken = Cookies.get("jwt_token");
   const navigate = useNavigate();
   const [apiResponse, setApiResponse] = useState({});
@@ -102,7 +89,7 @@ const SideBar = () => {
 
       getLeaderboardData();
     }
-  }, [jwtToken]);
+  }, [jwtToken, navigate]);
 
   const onClickLogout = () => {
     navigate("/login");
@@ -120,10 +107,18 @@ const SideBar = () => {
 
         return (
           <SideBarMainContainer>
-            <LogoImage
-              src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705580146/Frame_507_ba197a.png"
-              alt="website logo"
-            />
+            <PopupClosingContainer>
+              <LogoImage
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705580146/Frame_507_ba197a.png"
+                alt="website logo"
+              />
+              <MobileSideBarClosing
+                onClick={() => close()}
+                src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706078678/Close_gxeytv.png"
+                alt="close"
+              />
+            </PopupClosingContainer>
+
             <TextContainer>
               <Link
                 className="sidbar-content"
@@ -209,64 +204,9 @@ const SideBar = () => {
                 <ProfileName>{apiResponse.name}</ProfileName>
                 <ProfileEmail>{apiResponse.email}</ProfileEmail>
               </ProfileTextContainer>
-              <Popup
-                modal
-                trigger={
-                  <LogoutButton type="button">
-                    <ProfileImageContainerMedium>
-                      {loginUser.email[0].toUpperCase()}
-                    </ProfileImageContainerMedium>
-                    <ProfileLogoutImage
-                      src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706074414/log-out-01_yllnww.png"
-                      alt="logout"
-                    />
-                  </LogoutButton>
-                }
-              >
-                {(close) => (
-                  <LogoutContainer>
-                    <LogoutConformationContainer>
-                      <TestContainer>
-                        <WarningImageContainer>
-                          <WarningImage
-                            src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706080360/log-out-01_1_wtsz63.png"
-                            alt="logout"
-                          />
-                        </WarningImageContainer>
-                        <TextImageContainer>
-                          <HeaderTextImageContainer>
-                            <LogoutHeading>
-                              Are you sure you want to Logout?
-                            </LogoutHeading>
-                            <LogoutParagraph>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed
-                            </LogoutParagraph>
-                          </HeaderTextImageContainer>
-                        </TextImageContainer>
-                        <LogoutClosingImage
-                          onClick={() => close()}
-                          src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706078678/Close_gxeytv.png"
-                          alt="close"
-                        />
-                      </TestContainer>
-                      <LogoutButtonContainer>
-                        <YesLogoutButton type="button" onClick={onClickLogout}>
-                          Yes, Logout
-                        </YesLogoutButton>
-                        <CancelLogoutButton
-                          type="button"
-                          className="trigger-button"
-                          data-testid="close"
-                          onClick={() => close()}
-                        >
-                          Cancel
-                        </CancelLogoutButton>
-                      </LogoutButtonContainer>
-                    </LogoutConformationContainer>
-                  </LogoutContainer>
-                )}
-              </Popup>
+              <YesLogoutButton type="button" onClick={onClickLogout}>
+                Yes, Logout
+              </YesLogoutButton>
             </ProfileContainer>
           </SideBarMainContainer>
         );
@@ -275,4 +215,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default MobileSideBar;
