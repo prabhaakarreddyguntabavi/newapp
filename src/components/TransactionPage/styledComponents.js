@@ -40,6 +40,7 @@ export const TransctionsContainer = styled.table`
   background: #fff;
   margin-left: 40px;
   margin-top: 32px;
+  margin-bottom: 20px;
 
   @media screen and (max-width: 1000px) {
     margin-left: 20px;
@@ -75,7 +76,7 @@ export const DachTransctionContainer = styled.tr`
   width: 100%;
   // height: 58px;
   flex-shrink: 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: ${(props) => (props.length ? "" : "1px solid #e2e2e2")};
   margin-left: 24px;
 
   display: flex;
@@ -128,7 +129,7 @@ export const EditImage = styled.img`
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  margin-right: 20px;
+  margin-right: 15px;
   @media screen and (max-width: 768px) {
     margin-right: 10px;
   }
@@ -394,10 +395,10 @@ export const AddTransctionContainer = styled.form`
   background: #fff;
   margin: auto;
   aline-self: center;
-  @media screen and (max-width: 768px) {
-    width: 95vw;
-    height: 95vh;
-  }
+  // @media screen and (max-width: 768px) {
+  //   width: 95vw;
+  //   height: 95vh;
+  // }
 `;
 
 export const AddTransctionTextContainer = styled.div`

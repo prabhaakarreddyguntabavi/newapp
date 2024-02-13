@@ -8,7 +8,7 @@ import SideBar from "../SideBar";
 import Header from "../Header";
 import TotalDebitCredite from "../TotalDebitCredite";
 import LastThreeTransctionsFunction from "../LastThreeTransctions";
-import GenderChart from "../GenderChart";
+// import GenderChart from "../GenderChart";
 // import LastSevenDaysTransction from "../LastSevenDaysTransction";
 
 import {
@@ -75,19 +75,6 @@ const Dashboard = () => {
                   />
                   <LastTransction>Debit & Credit Overview</LastTransction>
                   <BarChartContainer>
-                    <div>
-                      {genderData.map((yearData) => (
-                        <div
-                          key={yearData.year}
-                          style={{
-                            display: "inline-block",
-                            marginRight: "10px",
-                          }}
-                        >
-                          <GenderChart data={yearData} />
-                        </div>
-                      ))}
-                    </div>
                     {/* <LastSevenDaysTransction /> */}
                   </BarChartContainer>
                 </BodyContainer>

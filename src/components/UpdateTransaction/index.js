@@ -47,7 +47,7 @@ const UpdateTransaction = (props) => {
 
   const [addTransctionStatus, updateTransction] = useState(false);
 
-  const [errorMessage, updateErrorMessage] = useState(false);
+  // const [errorMessage, updateErrorMessage] = useState(false);
 
   const [showError, setShowError] = useState(false);
 
@@ -155,6 +155,7 @@ const UpdateTransaction = (props) => {
           value={name}
           onChange={AddNameFunction}
           placeholder="Enter Name"
+          maxLength={30}
         />
       </AddTransctionInputContainer>
 

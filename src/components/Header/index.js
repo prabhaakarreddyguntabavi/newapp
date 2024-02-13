@@ -39,32 +39,32 @@ import {
 
 import "./index.css";
 
-const userDetails = [
-  { email: "jane.doe@gmail.com", password: "janedoe@123", userId: 1 },
-  { email: "samsmith@gmail.com", password: "samsmith@123", userId: 2 },
-  { email: "rahul@gmail.com", password: "rahul@123", userId: 4 },
-  { email: "teja@gmail.com", password: "teja@123", userId: 5 },
-  { email: "loki@gmail.com", password: "loki@123", userId: 6 },
-  { email: "ramesh@gmail.com", password: "ramesh@123", userId: 7 },
-  { email: "suresh@gmail.com", password: "suresh@123", userId: 8 },
-  { email: "prem@gmail.com", password: "prem@123", userId: 9 },
-  { email: "piyush@gmail.com", password: "piyush@123", userId: 10 },
-  { email: "isha@gmail.com", password: "isha@123", userId: 12 },
-  { email: "seema@gmail.com", password: "seema@123", userId: 14 },
-  { email: "arjun@gmail.com", password: "arjun@123", userId: 15 },
-  { email: "radha@gmail.com", password: "radha@123", userId: 16 },
-  { email: "phani@gmail.com", password: "phani@123", userId: 17 },
-  { email: "admin@gmail.com", password: "Admin@123", userId: 3 },
-];
+// const userDetails = [
+//   { email: "jane.doe@gmail.com", password: "janedoe@123", userId: 1 },
+//   { email: "samsmith@gmail.com", password: "samsmith@123", userId: 2 },
+//   { email: "rahul@gmail.com", password: "rahul@123", userId: 4 },
+//   { email: "teja@gmail.com", password: "teja@123", userId: 5 },
+//   { email: "loki@gmail.com", password: "loki@123", userId: 6 },
+//   { email: "ramesh@gmail.com", password: "ramesh@123", userId: 7 },
+//   { email: "suresh@gmail.com", password: "suresh@123", userId: 8 },
+//   { email: "prem@gmail.com", password: "prem@123", userId: 9 },
+//   { email: "piyush@gmail.com", password: "piyush@123", userId: 10 },
+//   { email: "isha@gmail.com", password: "isha@123", userId: 12 },
+//   { email: "seema@gmail.com", password: "seema@123", userId: 14 },
+//   { email: "arjun@gmail.com", password: "arjun@123", userId: 15 },
+//   { email: "radha@gmail.com", password: "radha@123", userId: 16 },
+//   { email: "phani@gmail.com", password: "phani@123", userId: 17 },
+//   { email: "admin@gmail.com", password: "Admin@123", userId: 3 },
+// ];
 
 const Header = (props) => {
   const jwtToken = Cookies.get("jwt_token");
 
   const [addTransctionStatus, updateTransction] = useState(false);
 
-  const loginUser = userDetails.find(
-    (eachUser) => eachUser.userId === parseInt(jwtToken)
-  );
+  // const loginUser = userDetails.find(
+  //   (eachUser) => eachUser.userId === parseInt(jwtToken)
+  // );
 
   const [showError, setShowError] = useState("");
 
@@ -83,7 +83,12 @@ const Header = (props) => {
   const [date, addDate] = useState();
 
   const AddNameFunction = (event) => {
-    addName(event.target.value);
+    console.log(event.target.value);
+    if (event.target.value.length >= 30) {
+      window.alert("Username shouldn't exceed 30 characters");
+    } else {
+      addName(event.target.value);
+    }
   };
 
   const addTypeFunction = (event) => {
@@ -140,9 +145,8 @@ const Header = (props) => {
       body: body,
     };
     const response = await fetch(url, options);
-    console.log(response);
+
     if (response.ok) {
-      console.log("Prabhakar Add Transction");
       const { updateApi } = props;
       updateApi(uuidv4());
       close();
@@ -188,7 +192,10 @@ const Header = (props) => {
                   </AddTransctionParagraph>
                 </HeadingTextContainer>
                 <AddTransctionCloseImage
-                  onClick={() => close()}
+                  onClick={() => {
+                    close();
+                    updateValues();
+                  }}
                   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706078678/Close_gxeytv.png"
                   alt="close"
                 />
@@ -205,6 +212,7 @@ const Header = (props) => {
                   value={name}
                   onChange={AddNameFunction}
                   placeholder="Enter Name"
+                  maxLength={30}
                 />
               </AddTransctionInputContainer>
 

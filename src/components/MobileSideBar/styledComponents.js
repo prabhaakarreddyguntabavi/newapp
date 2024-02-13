@@ -34,7 +34,7 @@ export const TextParagraph = styled.p`
 
 export const EachTextContainer = styled.div`
   display: flex;
-  width: 50vw;
+  width: 60vw;
   height: 60px;
   justify-content: flex-start;
   align-items: center;
@@ -44,7 +44,7 @@ export const EachTextContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
-  width: 207px;
+  width: 90vw;
   height: 171px;
   flex-shrink: 0;
   margin-top: 49px;

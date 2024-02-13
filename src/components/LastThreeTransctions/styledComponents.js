@@ -52,7 +52,7 @@ export const DachTransctionContainer = styled.div`
   width: 75vw;
   height: 58px;
   flex-shrink: 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: ${(props) => (props.length ? "" : "1px solid #e2e2e2")};
   margin-left: 24px;
   display: flex;
   justify-content: space-between;

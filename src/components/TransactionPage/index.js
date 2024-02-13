@@ -224,12 +224,16 @@ const TransactionPage = () => {
             </TransactionAmount>
           </HeadingDachTransctionContainer>
 
-          {transctionsData.map((eachTransaction) => {
+          {transctionsData.map((eachTransaction, index) => {
             const user = allProfileDetails.find(
               (findUser) => findUser.id === eachTransaction.user_id
             );
+            console.log(transctionsData.length - 1 === index);
             return (
-              <DachTransctionContainer key={eachTransaction.id}>
+              <DachTransctionContainer
+                length={transctionsData.length - 1 === index}
+                key={eachTransaction.id}
+              >
                 {jwtToken === "3" ? (
                   <Div2 isAdmin={jwtToken === "3"}>
                     {eachTransaction.type === "credit" ? (

@@ -68,6 +68,7 @@ export const AddTransctionMainContainer = styled.div`
   flex-shrink: 0;
   background: rgba(52, 64, 84, 0.7);
   backdrop-filter: blur(8px);
+  overflow: auto;
 `;
 
 export const AddTransctionContainer = styled.form`
@@ -80,7 +81,7 @@ export const AddTransctionContainer = styled.form`
   aline-self: center;
 
   @media screen and (max-width: 768px) {
-    width: 466px;
+    width: 90vw;
     height: 700px;
   }
 `;
@@ -202,7 +203,7 @@ export const SelectTransctionType = styled.select`
   font-weight: 400;
   line-height: normal;
   @media screen and (max-width: 768px) {
-    width: 85vw;
+    width: 80vw;
   }
 `;
 

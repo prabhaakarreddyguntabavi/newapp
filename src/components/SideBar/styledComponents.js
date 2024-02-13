@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SideBarMainContainer = styled.div`
   width: 15vw;
+  min-width: 206px;
   height: 100%;
   flex-shrink: 0;
   border-right: 1px solid #e2e2e2;
@@ -12,10 +13,12 @@ export const SideBarMainContainer = styled.div`
   @media screen and (max-width: 1000px) {
     width: 7vw;
     height: 99vh;
+    min-width: 0px;
   }
 
   @media screen and (max-width: 768px) {
     display: none;
+    min-width: 0px;
   }
 `;
 export const IconsImage = styled.img`
