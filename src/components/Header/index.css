@@ -2,3 +2,6 @@
   width: 50px;
   height: 30px;
 }
+.date-time-field {
+  height: 30px !important;
+}

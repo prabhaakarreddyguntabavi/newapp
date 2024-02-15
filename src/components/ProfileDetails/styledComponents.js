@@ -20,6 +20,11 @@ export const ProfileDetailsContainer = styled.div`
   padding-top: 32px;
   // height: 85vh;
   overflow: auto;
+
+  @media screen and (max-width: 1024px) {
+    height: 75%;
+  }
+
   @media screen and (max-width: 768px) {
     height: 83%;
   }
@@ -38,7 +43,7 @@ export const ProfileContainer = styled.div`
   align-items: center;
   overflow: auto;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     margin-left: 15px;
     width: 90vw;
     // max-height: 75vw;
@@ -51,7 +56,7 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileImage = styled.div`
-  border-radius: 1000px;
+  border-radius: 1024px;
   margin: auto;
   text-align: center;
   font-size: 120px;
@@ -65,7 +70,7 @@ export const ProfileImageContainer = styled.div`
   width: 200px;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
   text-align: center;
-  border-radius: 1000px;
+  border-radius: 1024px;
   display: flex;
   margin-top: 45px;
   @media screen and (max-width: 768px) {

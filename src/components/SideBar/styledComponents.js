@@ -10,7 +10,7 @@ export const SideBarMainContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 7vw;
     height: 99vh;
     min-width: 0px;
@@ -66,7 +66,7 @@ export const LogoImage = styled.img`
   display: inline-flex;
   align-items: center;
   margin: 20px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 20vw;
   }
 `;
@@ -89,7 +89,7 @@ export const ProfileContainer = styled.div`
   align-self: stretch;
   border-top: 1px solid #eaecf0;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     padding: 0px;
   }
 `;
@@ -103,7 +103,7 @@ export const ProfileImageContainer = styled.div`
   align-items: center;
   border-radius: 200px;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 `;
@@ -117,7 +117,7 @@ export const ProfileImageContainerMedium = styled.div`
   align-items: center;
   border-radius: 200px;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     display: flex;
     margin-top: 10px;
     margin-right: 8px;
@@ -154,7 +154,7 @@ export const ProfileTextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 10px;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 `;
@@ -167,7 +167,7 @@ export const ProfileLogoutImage = styled.img`
   bottom: 20px;
   margin-left: auto;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 `;

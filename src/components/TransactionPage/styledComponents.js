@@ -15,7 +15,7 @@ export const TransactionBodyContainer = styled.div`
   overflow: auto;
   height: 86vh;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 92vw;
   }
 
@@ -42,7 +42,7 @@ export const TransctionsContainer = styled.table`
   margin-top: 32px;
   margin-bottom: 20px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     margin-left: 20px;
     padding: 0px 0px 0px 12px;
   }
@@ -83,7 +83,7 @@ export const DachTransctionContainer = styled.tr`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     margin-left: 10px;
   }
 
@@ -104,7 +104,7 @@ export const HeadingDachTransctionContainer = styled.tr`
   // justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     margin-left: 0px;
     margin-right: 0px;
   }
@@ -193,7 +193,7 @@ export const SelectFilterConditions = styled.div`
   // margin-bottom: 32px;
   background: #fff;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     // width: 97%;
   }
 
@@ -258,7 +258,7 @@ export const TransactionName = styled.p`
   width: ${(props) => (props.isAdmin ? "15vw" : "20.5vw")};
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 23vw;
   }
 
@@ -277,7 +277,7 @@ export const TransactionCategory = styled.p`
   // margin-left: 114px;
   width: ${(props) => (props.isAdmin ? "16vw" : "21vw")};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 21vw;
   }
 
@@ -297,7 +297,7 @@ export const TransactionDate = styled.p`
   // margin-left: 120px;
   width: ${(props) => (props.isAdmin ? "15vw" : "20.5vw")};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 22vw;
   }
 
@@ -335,7 +335,7 @@ export const DebitAmount = styled.p`
   width: ${(props) => (props.isAdmin ? "15vw" : "10vw")};
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 15vw;
   }
 
@@ -355,7 +355,7 @@ export const CrediteAmount = styled.p`
   width: ${(props) => (props.isAdmin ? "15vw" : "10vw")};
   overflow: hidden;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 15vw;
   }
 
@@ -395,10 +395,9 @@ export const AddTransctionContainer = styled.form`
   background: #fff;
   margin: auto;
   aline-self: center;
-  // @media screen and (max-width: 768px) {
-  //   width: 95vw;
-  //   height: 95vh;
-  // }
+  @media screen and (max-width: 768px) {
+    width: 90vw;
+  }
 `;
 
 export const AddTransctionTextContainer = styled.div`
@@ -467,7 +466,7 @@ export const TransactionUserName = styled.p`
   line-height: normal;
   // margin-right: 170px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 20vw;
     margin-left: 15px;
   }

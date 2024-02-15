@@ -36,11 +36,14 @@ export const CrediteTextContainer = styled.div`
 export const HeadingAmount = styled.h1`
   color: #16dbaa;
   font-family: Inter;
-  font-size: 32px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin: 0px;
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -79,7 +82,7 @@ export const AmountDetailsContainer = styled.div`
   display: flex;
   height: 220px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 80vw;
   }
 

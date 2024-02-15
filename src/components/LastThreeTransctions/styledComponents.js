@@ -13,9 +13,9 @@ export const TransctionsContainer = styled.div`
   border-radius: 25px;
   background: #fff;
   margin-left: 40px;
-  margin-top: 32px;
+  // margin-top: 32px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 84vw;
     padding: 5px;
   }
@@ -53,12 +53,12 @@ export const DachTransctionContainer = styled.div`
   height: 58px;
   flex-shrink: 0;
   border-bottom: ${(props) => (props.length ? "" : "1px solid #e2e2e2")};
-  margin-left: 24px;
+  // margin-left: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 80vw;
     margin-left: 10px;
   }
@@ -202,6 +202,9 @@ export const AddTransctionContainer = styled.div`
   background: #fff;
   margin: auto;
   aline-self: center;
+  @media screen and (max-width: 768px) {
+    width: 90vw;
+  }
 `;
 
 export const AddTransctionTextContainer = styled.div`

@@ -9,10 +9,10 @@ export const DashboardMainContainer = styled.div`
 
 export const BodyContainer = styled.div`
   overflow: auto;
-  width: 85vw;
+  width: 84.5vw;
   height: 88vh;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 92vw;
     // background-color: #000;
   }
@@ -24,12 +24,22 @@ export const BodyContainer = styled.div`
 `;
 
 export const BarChartContainer = styled.div`
-  // width: 90vw;
+  min-height: 25%;
+  width: 94%;
   // height: 364px;
   flex-shrink: 0;
   border-radius: 25px;
   background: #fff;
   margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  aline-items: center;
+  // overflow: auto;
+  @media screen and (max-width: 768px) {
+    margin-left: 10px;
+    width: 100%;
+  }
 `;
 
 export const LastTransction = styled.h1`
@@ -40,10 +50,10 @@ export const LastTransction = styled.h1`
   font-weight: 600;
   line-height: normal;
   margin-left: 40px;
-  margin-top: 20px;
+  margin-top: 30px;
   @media screen and (max-width: 768px) {
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 22px;
   }
 `;
 

@@ -59,6 +59,9 @@ export const AddTransctionContainer = styled.div`
   background: #fff;
   margin: auto;
   aline-self: center;
+  @media screen and (max-width: 768px) {
+    width: 90vw;
+  }
 `;
 
 export const AddTransctionButton = styled.button`

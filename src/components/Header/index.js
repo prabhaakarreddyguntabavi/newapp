@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Popup from "reactjs-popup";
 import { v4 as uuidv4 } from "uuid";
@@ -35,30 +35,28 @@ import {
   MobilePopupContainer,
   MobileParagraph,
   MobileAddTransactions,
+  ErrorMessageParagraph,
 } from "./styledComponents";
 
 import "./index.css";
 
-// const userDetails = [
-//   { email: "jane.doe@gmail.com", password: "janedoe@123", userId: 1 },
-//   { email: "samsmith@gmail.com", password: "samsmith@123", userId: 2 },
-//   { email: "rahul@gmail.com", password: "rahul@123", userId: 4 },
-//   { email: "teja@gmail.com", password: "teja@123", userId: 5 },
-//   { email: "loki@gmail.com", password: "loki@123", userId: 6 },
-//   { email: "ramesh@gmail.com", password: "ramesh@123", userId: 7 },
-//   { email: "suresh@gmail.com", password: "suresh@123", userId: 8 },
-//   { email: "prem@gmail.com", password: "prem@123", userId: 9 },
-//   { email: "piyush@gmail.com", password: "piyush@123", userId: 10 },
-//   { email: "isha@gmail.com", password: "isha@123", userId: 12 },
-//   { email: "seema@gmail.com", password: "seema@123", userId: 14 },
-//   { email: "arjun@gmail.com", password: "arjun@123", userId: 15 },
-//   { email: "radha@gmail.com", password: "radha@123", userId: 16 },
-//   { email: "phani@gmail.com", password: "phani@123", userId: 17 },
-//   { email: "admin@gmail.com", password: "Admin@123", userId: 3 },
-// ];
-
 const Header = (props) => {
   const jwtToken = Cookies.get("jwt_token");
+
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const dateTimeString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+    console.log("dateTimeString");
+    console.log(dateTimeString);
+
+    return dateTimeString;
+  };
 
   const [addTransctionStatus, updateTransction] = useState(false);
 
@@ -80,13 +78,14 @@ const Header = (props) => {
   const [type, addType] = useState("credit");
   const [category, addCategory] = useState("Shopping");
   const [amount, AddAmount] = useState();
-  const [date, addDate] = useState();
+  const [date, addDate] = useState(getCurrentDateTime());
+  const [errorMessage, updateErrorMessage] = useState("");
 
   const AddNameFunction = (event) => {
-    console.log(event.target.value);
     if (event.target.value.length >= 30) {
       window.alert("Username shouldn't exceed 30 characters");
     } else {
+      getCurrentDateTime();
       addName(event.target.value);
     }
   };
@@ -107,6 +106,10 @@ const Header = (props) => {
     addDate(event.target.value);
   };
 
+  useEffect(() => {
+    addDate(getCurrentDateTime());
+  }, [date]);
+
   const updateValues = () => {
     addName("");
     addType("credit");
@@ -117,44 +120,56 @@ const Header = (props) => {
 
   const getLeaderboardData = async (close) => {
     updateTransction("inprogress");
+    updateErrorMessage("");
 
     let headers = {};
     let url = "";
 
-    const body = JSON.stringify({
-      name,
-      type: type.toLowerCase(),
-      category,
-      amount,
-      date,
-      user_id: jwtToken,
-    });
+    if (
+      name !== undefined &&
+      type !== "" &&
+      category !== "" &&
+      amount !== undefined &&
+      date !== undefined
+    ) {
+      const body = JSON.stringify({
+        name,
+        type: type.toLowerCase(),
+        category,
+        amount,
+        date,
+        user_id: jwtToken,
+      });
 
-    headers = {
-      "Content-Type": "application/json",
-      "x-hasura-role": "user",
-      "x-hasura-admin-secret":
-        "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-      "x-hasura-user-id": jwtToken,
-    };
-    url = "https://bursting-gelding-24.hasura.app/api/rest/add-transaction";
+      headers = {
+        "Content-Type": "application/json",
+        "x-hasura-role": "user",
+        "x-hasura-admin-secret":
+          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+        "x-hasura-user-id": jwtToken,
+      };
+      url = "https://bursting-gelding-24.hasura.app/api/rest/add-transaction";
 
-    const options = {
-      method: "POST",
-      headers: headers,
-      body: body,
-    };
-    const response = await fetch(url, options);
+      const options = {
+        method: "POST",
+        headers: headers,
+        body: body,
+      };
+      const response = await fetch(url, options);
 
-    if (response.ok) {
-      const { updateApi } = props;
-      updateApi(uuidv4());
-      close();
-      updateTransction("");
-      updateValues();
+      if (response.ok) {
+        const { updateApi } = props;
+        updateApi(uuidv4());
+        close();
+        updateTransction("");
+        updateValues();
+      } else {
+        updateTransction("");
+        handleShowError();
+      }
     } else {
+      updateErrorMessage("Please Fill All Fields");
       updateTransction("");
-      handleShowError();
     }
   };
 
@@ -278,8 +293,10 @@ const Header = (props) => {
                   Date
                 </AddTransctionLabel>
                 <AddTransctionNameInput
+                  className="date-time-field"
                   required="required"
                   type="datetime-local"
+                  readOnly
                   id="addtransctionamount"
                   value={date}
                   onChange={addDateFunction}
@@ -305,12 +322,13 @@ const Header = (props) => {
                   "Add Transaction "
                 )}
               </AddTransctionButton>
-              {showError && (
+              <ErrorMessageParagraph>{errorMessage}</ErrorMessageParagraph>
+              {/* {showError && (
                 <ErrorPopup
                   message="Please Fill All Fields"
                   onClose={handleCloseError}
                 />
-              )}
+              )} */}
             </AddTransctionContainer>
           </AddTransctionMainContainer>
         )}

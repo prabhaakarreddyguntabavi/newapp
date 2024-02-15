@@ -3,29 +3,39 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
 import Cookies from "js-cookie";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  // Legend,
-} from "recharts";
+import { BarChart } from "@mui/x-charts/BarChart";
+
+// import {
+//   Chart,
+//   Series,
+//   CommonSeriesSettings,
+//   Legend,
+// } from "devextreme-react/chart";
 
 import {
+  LastThreeTransctions,
+  DachTransctionContainer,
+  EditImage,
+  DeleteImage,
+  TitleParagraph,
+  CategaryParagraph,
+  CrediteAmount,
+  DateOfTransctionParagraph,
+  DebitAmount,
   LoadingContainer,
+  DebitImage,
+  CrediteImage,
   NoTransactionsFountHeading,
-  GraphPrargraph,
-  GraphPrargraphSpan,
-  GraphValuesSetting,
-  GraphCredite,
-  GraphDebit,
-  GraphTextParagraph,
-  GraphHeaderContainer,
+  AddTransctionContainer,
+  AddTransctionMainContainer,
+  AddTransctionTextContainer,
+  HeadingTextContainer,
+  AddTransctionHeading,
+  AddTransctionParagraph,
+  AddTransctionCloseImage,
+  LogoutContainer,
+  AdminProfileContainer,
 } from "./styledComponents";
-
-const colors = ["#4D78FF", "#FCAA0B"];
 
 const apiStatusConstants = {
   initial: "INITIAL",
@@ -34,9 +44,7 @@ const apiStatusConstants = {
   failure: "FAILURE",
 };
 
-const GenderChart = (props) => {
-  const { callApi } = props;
-
+const GenderChart = () => {
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
     data: null,
@@ -85,10 +93,7 @@ const GenderChart = (props) => {
       if (response.ok) {
         setApiResponse({
           status: apiStatusConstants.success,
-          data:
-            jwtToken === "3"
-              ? responseData.last_7_days_transactions_totals_admin
-              : responseData.last_7_days_transactions_credit_debit_totals,
+          data: responseData.last_7_days_transactions_credit_debit_totals,
         });
       } else {
         setApiResponse({
@@ -100,21 +105,18 @@ const GenderChart = (props) => {
     };
 
     getLeaderboardData();
-  }, [callApi]);
+  }, []);
 
-  // const getDayOfWeek = (dateString) => {
-  //   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const getDayOfWeek = (dateString) => {
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  //   const date = new Date(dateString);
-  //   const dayOfWeekIndex = date.getDay();
-  //   return daysOfWeek[dayOfWeekIndex];
-  // };
+    const date = new Date(dateString);
+    const dayOfWeekIndex = date.getDay();
+    return daysOfWeek[dayOfWeekIndex];
+  };
 
   const renderSuccessView = () => {
     const { data } = apiResponse;
-
-    console.log(data);
-
     if (data.length !== 0) {
       function calculateDailySums(transactions) {
         const dailySums = {};
@@ -128,7 +130,7 @@ const GenderChart = (props) => {
               debit: 0,
               credit: 0,
               type: transaction.type,
-              date: date,
+              date: getDayOfWeek(transaction.date),
               sum: 0,
             };
           }
@@ -148,86 +150,34 @@ const GenderChart = (props) => {
       }
 
       const { totalDailySums } = calculateDailySums(data);
-      // const latestTransactions = transactions;
 
-      totalDailySums.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const xAxisData = totalDailySums.map((entry) => entry.date);
 
-      // Get the last 7 transactions
-      const last7Transactions = totalDailySums.slice(0, 7);
-      // console.log(last7Transactions);
-
-      function separateTransactions(last7Transactions) {
-        const creditTransactions = [];
-        const debitTransactions = [];
-
-        data.forEach((transaction) => {
-          if (transaction.type === "credit") {
-            creditTransactions.push(transaction.sum);
-          } else if (transaction.type === "debit") {
-            debitTransactions.push(transaction.sum);
-          }
-        });
-
-        return { creditTransactions, debitTransactions };
-      }
-
-      const { creditTransactions, debitTransactions } =
-        separateTransactions(last7Transactions);
-
-      const creditTransactionsSum = creditTransactions.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
-      const debitTransactionsSum = debitTransactions.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
-
-      // Now you have separate arrays for credit and debit transactions
-      //
+      const debit = totalDailySums.map((entry) => entry.debit);
+      const credit = totalDailySums.map((entry) => entry.credit);
+      console.log(debit);
+      console.log(credit);
 
       return (
         <>
-          <GraphHeaderContainer>
-            <GraphPrargraph>
-              <GraphPrargraphSpan> ${debitTransactionsSum}</GraphPrargraphSpan>{" "}
-              Debited &
-              <GraphPrargraphSpan>
-                {" "}
-                ${creditTransactionsSum}{" "}
-              </GraphPrargraphSpan>{" "}
-              Credited in this Week
-            </GraphPrargraph>
-            <GraphValuesSetting>
-              <GraphTextParagraph>
-                <GraphCredite></GraphCredite> Credit
-              </GraphTextParagraph>
-              <GraphTextParagraph>
-                <GraphDebit></GraphDebit> Debit
-              </GraphTextParagraph>
-            </GraphValuesSetting>
-          </GraphHeaderContainer>
           <BarChart
-            className="chart-container"
-            width={window.innerWidth * 0.8}
-            height={window.innerWidth * 0.4}
-            data={last7Transactions}
-            borderRadius={200}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-
-            <Bar dataKey="credit" fill={colors[0]} shape={<CustomBar />} />
-            <Bar dataKey="debit" fill={colors[1]} shape={<CustomBar />} />
-          </BarChart>
+            xAxis={[{ scaleType: "band", data: xAxisData }]}
+            series={[
+              {
+                data: [...credit],
+                fill: "red",
+              },
+              {
+                data: [...debit],
+              },
+            ]}
+            width={800}
+            height={400}
+            color="#000"
+            backgroundColor="lightgray"
+            padding="10px"
+            border="1px solid black"
+          />
         </>
       );
     }
@@ -246,20 +196,6 @@ const GenderChart = (props) => {
       <ReactLoading type={"bars"} color={"#000000"} height={50} width={50} />
     </LoadingContainer>
   );
-
-  const CustomBar = (props) => {
-    const { x, y, width, height } = props;
-    return (
-      <rect
-        x={x}
-        y={y}
-        width={width}
-        height={height}
-        fill={props.fill}
-        rx={10} // Set border radius for the bars
-      />
-    );
-  };
 
   const renderFailureView = (isDarkMood) => (
     <div className="no-search-result">

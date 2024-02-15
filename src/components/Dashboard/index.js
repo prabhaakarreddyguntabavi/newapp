@@ -8,7 +8,7 @@ import SideBar from "../SideBar";
 import Header from "../Header";
 import TotalDebitCredite from "../TotalDebitCredite";
 import LastThreeTransctionsFunction from "../LastThreeTransctions";
-// import GenderChart from "../GenderChart";
+import GenderChart from "../GenderChart";
 // import LastSevenDaysTransction from "../LastSevenDaysTransction";
 
 import {
@@ -20,16 +20,6 @@ import {
 } from "./styledComponents";
 
 import "./index.css";
-
-const genderData = [
-  { year: 2020, maleCount: 100, femaleCount: 120 },
-  { year: 2021, maleCount: 110, femaleCount: 130 },
-  { year: 2022, maleCount: 120, femaleCount: 140 },
-  { year: 2023, maleCount: 130, femaleCount: 150 },
-  { year: 2024, maleCount: 140, femaleCount: 160 },
-  { year: 2025, maleCount: 150, femaleCount: 170 },
-  { year: 2026, maleCount: 160, femaleCount: 180 },
-];
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -63,10 +53,12 @@ const Dashboard = () => {
               <BodyMainContainer>
                 <Header updateApi={callTransactionsUpdate} />
                 <BodyContainer>
-                  <TotalDebitCredite
-                    isUserAdmin={jwtToken === "3"}
-                    callApi={callApi}
-                  />
+                  <div>
+                    <TotalDebitCredite
+                      isUserAdmin={jwtToken === "3"}
+                      callApi={callApi}
+                    />
+                  </div>
                   <LastTransction>Last Transaction</LastTransction>
                   <LastThreeTransctionsFunction
                     isUserAdmin={jwtToken === "3"}
@@ -75,6 +67,7 @@ const Dashboard = () => {
                   />
                   <LastTransction>Debit & Credit Overview</LastTransction>
                   <BarChartContainer>
+                    <GenderChart callApi={callApi} />
                     {/* <LastSevenDaysTransction /> */}
                   </BarChartContainer>
                 </BodyContainer>

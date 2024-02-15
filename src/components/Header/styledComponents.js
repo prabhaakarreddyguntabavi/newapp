@@ -9,7 +9,7 @@ export const HeaderMainContainer = styled.div`
   background: #fff;
   height: 5vh;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     // width: 92%;
   }
 
@@ -73,16 +73,17 @@ export const AddTransctionMainContainer = styled.div`
 
 export const AddTransctionContainer = styled.form`
   width: 466px;
-  height: 700px;
+  height: 80vh;
   flex-shrink: 0;
   border-radius: 16px;
   background: #fff;
   margin: auto;
   aline-self: center;
+  padding: 10px;
 
   @media screen and (max-width: 768px) {
     width: 90vw;
-    height: 700px;
+    height: 75vh;
   }
 `;
 
@@ -280,4 +281,5 @@ export const ErrorMessageParagraph = styled.div`
   margin-left: 30px;
   margin-top: 7px;
 `;
-// export const AddTransctionContainer = styled.div``;
+
+export const ErrorMessage = styled.p``;
