@@ -2,7 +2,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-import TransctionContext from "./context/TransctionContext";
+import TransactionContext from "./context/TransactionContext";
 
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
@@ -27,19 +27,19 @@ const App = () => {
     }
   }, []);
 
-  const [transactionOption, SelectTransactionOption] =
-    useState("ALLTRNSACTION");
+  const [transactionOption, selectTransactionOption] =
+    useState("ALLTRANSACTION");
 
   const onChangeSelectOption = (id) => {
     onChangeSelect(id);
   };
 
   const onChangeTransactionOption = (id) => {
-    SelectTransactionOption(id);
+    selectTransactionOption(id);
   };
 
   return (
-    <TransctionContext.Provider
+    <TransactionContext.Provider
       value={{
         selectOption,
         transactionOption,
@@ -54,10 +54,10 @@ const App = () => {
           <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/transaction" element={<TransactionPage />} />
           <Route exact path="/profile" element={<ProfileDetails />} />
-          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </TransctionContext.Provider>
+    </TransactionContext.Provider>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
 
-const TransctionContext = React.createContext({
+const TransactionContext = React.createContext({
   selectOption: "DASHBOARD",
   onChangeSelectOption: () => {},
-  transactionOption: "ALLTRNSACTION",
+  transactionOption: "ALLTRANSACTION",
   onChangeTransactionOption: () => {},
   isUserAdmin: false,
   onChangeIsAdmin: () => {},
@@ -11,4 +11,4 @@ const TransctionContext = React.createContext({
   updateReactDict: () => {},
 });
 
-export default TransctionContext;
+export default TransactionContext;

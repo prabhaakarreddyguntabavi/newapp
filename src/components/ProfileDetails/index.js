@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import SideBar from "../SideBar";
 import Header from "../Header";
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 
 import {
   ProfileHomePage,
@@ -15,9 +15,9 @@ import {
   ProfileContainer,
   ProfileImage,
   ProfileImageContainer,
-  AddTransctionNameInput,
-  AddTransctionLabel,
-  AddTransctionInputContainer,
+  AddTransactionNameInput,
+  AddTransactionLabel,
+  AddTransactionInputContainer,
   DetailsContainer,
 } from "./styledComponents";
 
@@ -93,145 +93,145 @@ const ProfileDetails = (props) => {
           <ProfileImage>{data.name[0].toUpperCase()}</ProfileImage>
         </ProfileImageContainer>
         <DetailsContainer>
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               Your Name
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.name}
               // onChange={onChangePas}
               placeholder="Your Name"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               User Name
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.name}
               // onChange={onChangePas}
               placeholder="User Name"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               Email
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="email"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.email}
               // onChange={onChangePas}
               placeholder="Email"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               Password
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="password"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.email}
               // onChange={onChangePas}
               placeholder="Password"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionamount">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionamount">
               Date of Birth
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="date"
-              id="addtransctionamount"
+              id="addtransactionamount"
               value={data.date_of_birth}
               // onChange={onChangePas}
               placeholder="Date of Birth"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               Present Address
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.present_address}
               // onChange={onChangePas}
               placeholder="Present Address"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionname">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionname">
               Permanent Address
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionname"
+              id="addtransactionname"
               value={data.permanent_address}
               // onChange={onChangePas}
               placeholder="Permanent Address"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionamount">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionamount">
               City
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionamount"
+              id="addtransactionamount"
               value={data.city}
               // onChange={onChangePas}
               placeholder="City"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionamount">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionamount">
               Postal Code
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="number"
-              id="addtransctionamount"
+              id="addtransactionamount"
               value={data.postal_code}
               // onChange={onChangePas}
               placeholder="Postal Code"
               readOnly={true}
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
 
-          <AddTransctionInputContainer>
-            <AddTransctionLabel htmlFor="addtransctionamount">
+          <AddTransactionInputContainer>
+            <AddTransactionLabel htmlFor="addtransactionamount">
               Country
-            </AddTransctionLabel>
-            <AddTransctionNameInput
+            </AddTransactionLabel>
+            <AddTransactionNameInput
               type="text"
-              id="addtransctionamount"
+              id="addtransactionamount"
               value={data.country}
               readOnly={true}
               // onChange={onChangePas}
               placeholder="Country"
             />
-          </AddTransctionInputContainer>
+          </AddTransactionInputContainer>
         </DetailsContainer>
       </>
     );
@@ -287,7 +287,7 @@ const ProfileDetails = (props) => {
   };
   if (jwtToken !== undefined) {
     return (
-      <TransctionContext.Consumer>
+      <TransactionContext.Consumer>
         {(value) => {
           const { selectOption, onChangeSelectOption } = value;
 
@@ -307,7 +307,7 @@ const ProfileDetails = (props) => {
             </ProfileHomePage>
           );
         }}
-      </TransctionContext.Consumer>
+      </TransactionContext.Consumer>
     );
   } else {
     return null;

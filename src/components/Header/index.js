@@ -7,10 +7,10 @@ import ReactLoading from "react-loading";
 import MobileSideBar from "../MobileSideBar";
 import { IoMdMenu } from "react-icons/io";
 
-import TransctionContext from "../../context/TransctionContext";
+import TransctionContext from "../../context/TransactionContext";
 import { IoAddCircleOutline } from "react-icons/io5";
 
-import ErrorPopup from "../ErrorMessage";
+// import ErrorPopup from "../ErrorMessage";
 
 import {
   HeaderMainContainer,
@@ -36,6 +36,7 @@ import {
   MobileParagraph,
   MobileAddTransactions,
   ErrorMessageParagraph,
+  NotificationMessage,
 } from "./styledComponents";
 
 import "./index.css";
@@ -64,15 +65,15 @@ const Header = (props) => {
   //   (eachUser) => eachUser.userId === parseInt(jwtToken)
   // );
 
-  const [showError, setShowError] = useState("");
+  // const [showError, setShowError] = useState("");
 
-  const handleShowError = () => {
-    setShowError(true);
-  };
+  // const handleShowError = () => {
+  //   setShowError(true);
+  // };
 
-  const handleCloseError = () => {
-    setShowError(false);
-  };
+  // const handleCloseError = () => {
+  //   setShowError(false);
+  // };
 
   const [name, addName] = useState();
   const [type, addType] = useState("credit");
@@ -85,7 +86,6 @@ const Header = (props) => {
     if (event.target.value.length >= 30) {
       window.alert("Username shouldn't exceed 30 characters");
     } else {
-      getCurrentDateTime();
       addName(event.target.value);
     }
   };
@@ -165,7 +165,7 @@ const Header = (props) => {
         updateValues();
       } else {
         updateTransction("");
-        handleShowError();
+        // handleShowError();
       }
     } else {
       updateErrorMessage("Please Fill All Fields");
@@ -218,7 +218,10 @@ const Header = (props) => {
 
               <AddTransctionInputContainer>
                 <AddTransctionLabel htmlFor="addtransctionname">
-                  Transaction Name
+                  Transaction Name*
+                  <NotificationMessage>
+                    (Max 30 Charactors*)
+                  </NotificationMessage>
                 </AddTransctionLabel>
                 <AddTransctionNameInput
                   required="required"
@@ -233,7 +236,7 @@ const Header = (props) => {
 
               <AddTransctionInputContainer>
                 <AddTransctionLabel htmlFor="transctionType">
-                  Transaction Type
+                  Transaction Type*
                 </AddTransctionLabel>
                 <SelectTransctionType
                   required="required"
@@ -253,7 +256,7 @@ const Header = (props) => {
 
               <AddTransctionInputContainer>
                 <AddTransctionLabel htmlFor="transctionCategory">
-                  Category
+                  Category*
                 </AddTransctionLabel>
                 <SelectTransctionType
                   required="required"
@@ -276,7 +279,7 @@ const Header = (props) => {
 
               <AddTransctionInputContainer>
                 <AddTransctionLabel htmlFor="addtransctionamount">
-                  Amount
+                  Amount*
                 </AddTransctionLabel>
                 <AddTransctionNameInput
                   required="required"
@@ -290,7 +293,7 @@ const Header = (props) => {
 
               <AddTransctionInputContainer>
                 <AddTransctionLabel htmlFor="addtransctionamount">
-                  Date
+                  Date*
                 </AddTransctionLabel>
                 <AddTransctionNameInput
                   className="date-time-field"

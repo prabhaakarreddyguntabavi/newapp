@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TransctionsContainer = styled.div`
+export const TransactionsContainer = styled.div`
   display: flex;
   width: 90%;
   //   height: 210px;
@@ -48,7 +48,7 @@ export const Div2 = styled.div`
   }
 `;
 
-export const DachTransctionContainer = styled.div`
+export const DachTransactionContainer = styled.div`
   width: 75vw;
   height: 58px;
   flex-shrink: 0;
@@ -124,7 +124,7 @@ export const CategaryParagraph = styled.p`
   overflow: hidden;
 `;
 
-export const DateOfTransctionParagraph = styled.p`
+export const DateOfTransactionParagraph = styled.p`
   color: #505887;
   font-family: Inter;
   font-size: 16px;
@@ -185,7 +185,7 @@ export const LogoutContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const AddTransctionMainContainer = styled.div`
+export const AddTransactionMainContainer = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -194,7 +194,7 @@ export const AddTransctionMainContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const AddTransctionContainer = styled.div`
+export const AddTransactionContainer = styled.div`
   width: 466px;
   height: 700px;
   flex-shrink: 0;
@@ -207,7 +207,7 @@ export const AddTransctionContainer = styled.div`
   }
 `;
 
-export const AddTransctionTextContainer = styled.div`
+export const AddTransactionTextContainer = styled.div`
   display: flex;
 `;
 
@@ -217,7 +217,7 @@ export const HeadingTextContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const AddTransctionHeading = styled.h1`
+export const AddTransactionHeading = styled.h1`
   color: #333b69;
   font-family: Inter;
   font-size: 20px;
@@ -226,7 +226,7 @@ export const AddTransctionHeading = styled.h1`
   line-height: 28px; /* 140% */
 `;
 
-export const AddTransctionParagraph = styled.p`
+export const AddTransactionParagraph = styled.p`
   width: 289px;
   color: #505887;
   font-family: Inter;
@@ -237,7 +237,7 @@ export const AddTransctionParagraph = styled.p`
   margin-top: 8px;
 `;
 
-export const AddTransctionCloseImage = styled.img`
+export const AddTransactionCloseImage = styled.img`
   width: 24px;
   height: 24px;
   flex-shrink: 0;
@@ -296,7 +296,7 @@ export const EditDeleteContainer = styled.div`
   }
 `;
 
-export const TransctionParagraphMobile = styled.p`
+export const TransactionParagraphMobile = styled.p`
   display: none;
   @media screen and (max-width: 768px) {
     display: flex;

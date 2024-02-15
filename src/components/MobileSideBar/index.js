@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 
 import {
   SideBarMainContainer,
@@ -97,7 +97,7 @@ const MobileSideBar = (props) => {
   };
 
   return (
-    <TransctionContext.Consumer>
+    <TransactionContext.Consumer>
       {(value) => {
         const {
           selectOption,
@@ -125,7 +125,7 @@ const MobileSideBar = (props) => {
                 to="/"
                 onClick={() => {
                   onChangeSelectOption("DASHBOARD");
-                  onChangeTransactionOption("ALLTRNSACTION");
+                  onChangeTransactionOption("ALLTRANSACTION");
                 }}
               >
                 <EachTextContainer>
@@ -175,7 +175,7 @@ const MobileSideBar = (props) => {
                 to="/profile"
                 onClick={() => {
                   onChangeSelectOption("PROFILE");
-                  onChangeTransactionOption("ALLTRNSACTION");
+                  onChangeTransactionOption("ALLTRANSACTION");
                 }}
               >
                 <EachTextContainer>
@@ -211,7 +211,7 @@ const MobileSideBar = (props) => {
           </SideBarMainContainer>
         );
       }}
-    </TransctionContext.Consumer>
+    </TransactionContext.Consumer>
   );
 };
 

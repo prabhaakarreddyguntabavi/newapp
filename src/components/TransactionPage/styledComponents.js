@@ -25,7 +25,7 @@ export const TransactionBodyContainer = styled.div`
   }
 `;
 
-export const TransctionsContainer = styled.table`
+export const TransactionsContainer = styled.table`
   display: flex;
   width: 95%;
   min-height: 80vh;
@@ -72,7 +72,7 @@ export const Div2 = styled.div`
   }
 `;
 
-export const DachTransctionContainer = styled.tr`
+export const DashTransactionContainer = styled.tr`
   width: 100%;
   // height: 58px;
   flex-shrink: 0;
@@ -93,9 +93,9 @@ export const DachTransctionContainer = styled.tr`
   }
 `;
 
-export const HeadingDachTransctionContainer = styled.tr`
+export const HeadingDashTransactionContainer = styled.tr`
   width: 100%;
-  height: 58px;
+  // height: 58px;
   flex-shrink: 0;
   border-bottom: 1px solid #e2e2e2;
   margin-left: 24px;
@@ -115,7 +115,7 @@ export const HeadingDachTransctionContainer = styled.tr`
   }
 `;
 
-export const CrediteDebitImage = styled.img`
+export const CreditDebitImage = styled.img`
   width: 30px;
   height: 30px;
   flex-shrink: 0;
@@ -155,7 +155,7 @@ export const TitleParagraph = styled.p`
   }
 `;
 
-export const CategaryParagraph = styled.p`
+export const CategoryParagraph = styled.p`
   color: #505887;
   font-family: Inter;
   font-size: 16px;
@@ -170,7 +170,7 @@ export const CategaryParagraph = styled.p`
   }
 `;
 
-export const DateOfTransctionParagraph = styled.p`
+export const DateOfTransactionParagraph = styled.p`
   color: #505887;
   font-family: Inter;
   font-size: 16px;
@@ -204,7 +204,7 @@ export const SelectFilterConditions = styled.div`
   }
 `;
 
-export const TransctionSelectFilter = styled.button`
+export const TransactionSelectFilter = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -344,7 +344,7 @@ export const DebitAmount = styled.p`
   }
 `;
 
-export const CrediteAmount = styled.p`
+export const CreditAmount = styled.p`
   color: #16dbaa;
   font-family: Inter;
   font-size: 16px;
@@ -378,7 +378,7 @@ export const LogoutContainer = styled.div`
   margin: 0px;
 `;
 
-export const AddTransctionMainContainer = styled.div`
+export const AddTransactionMainContainer = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -387,7 +387,7 @@ export const AddTransctionMainContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const AddTransctionContainer = styled.form`
+export const AddTransactionContainer = styled.form`
   width: 466px;
   height: 700px;
   flex-shrink: 0;
@@ -400,7 +400,7 @@ export const AddTransctionContainer = styled.form`
   }
 `;
 
-export const AddTransctionTextContainer = styled.div`
+export const AddTransactionTextContainer = styled.div`
   display: flex;
 `;
 
@@ -410,7 +410,7 @@ export const HeadingTextContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const AddTransctionHeading = styled.h1`
+export const AddTransactionHeading = styled.h1`
   color: #333b69;
   font-family: Inter;
   font-size: 20px;
@@ -419,7 +419,7 @@ export const AddTransctionHeading = styled.h1`
   line-height: 28px; /* 140% */
 `;
 
-export const AddTransctionParagraph = styled.p`
+export const AddTransactionParagraph = styled.p`
   width: 289px;
   color: #505887;
   font-family: Inter;
@@ -430,7 +430,7 @@ export const AddTransctionParagraph = styled.p`
   margin-top: 8px;
 `;
 
-export const AddTransctionCloseImage = styled.img`
+export const AddTransactionCloseImage = styled.img`
   width: 24px;
   height: 24px;
   flex-shrink: 0;
@@ -507,7 +507,7 @@ export const EditDeleteContainer = styled.div`
   }
 `;
 
-export const TransctionParagraphMobile = styled.p`
+export const TransactionParagraphMobile = styled.p`
   display: none;
   @media screen and (max-width: 768px) {
     display: flex;
@@ -519,8 +519,4 @@ export const TransctionParagraphMobile = styled.p`
   }
 `;
 
-// export const TransctionBodyContainer = styled.div``;
-
-// export const TransctionBodyContainer = styled.div``;
-
-// export const TransctionBodyContainer = styled.div``;
+export const TextContainer = styled.div``;

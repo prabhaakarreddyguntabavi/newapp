@@ -3,6 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
 import Cookies from "js-cookie";
+
+import FailureCase from "../FailureCase";
+
 import {
   BarChart,
   Bar,
@@ -36,6 +39,8 @@ const apiStatusConstants = {
 
 const GenderChart = (props) => {
   const { callApi } = props;
+
+  const [CallGraphApi, updateApi] = useState("");
 
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
@@ -82,6 +87,8 @@ const GenderChart = (props) => {
       const response = await fetch(url, options);
       const responseData = await response.json();
 
+      console.log(response);
+
       if (response.ok) {
         setApiResponse({
           status: apiStatusConstants.success,
@@ -100,20 +107,12 @@ const GenderChart = (props) => {
     };
 
     getLeaderboardData();
-  }, [callApi]);
-
-  // const getDayOfWeek = (dateString) => {
-  //   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  //   const date = new Date(dateString);
-  //   const dayOfWeekIndex = date.getDay();
-  //   return daysOfWeek[dayOfWeekIndex];
-  // };
+  }, [callApi, CallGraphApi]);
 
   const renderSuccessView = () => {
     const { data } = apiResponse;
 
-    console.log(data);
+    // console.log(data);
 
     if (data.length !== 0) {
       function calculateDailySums(transactions) {
@@ -121,7 +120,7 @@ const GenderChart = (props) => {
         let totalDailySums = [];
 
         transactions.forEach((transaction) => {
-          const date = transaction.date.split("T")[0]; // Extracting the date part
+          const date = transaction.date.split("T")[0];
 
           if (!dailySums[date]) {
             dailySums[date] = {
@@ -208,9 +207,9 @@ const GenderChart = (props) => {
             </GraphValuesSetting>
           </GraphHeaderContainer>
           <BarChart
-            className="chart-container"
+            // className="chart-container"
             width={window.innerWidth * 0.8}
-            height={window.innerWidth * 0.4}
+            height={window.innerWidth * 0.3}
             data={last7Transactions}
             borderRadius={200}
             margin={{
@@ -240,7 +239,7 @@ const GenderChart = (props) => {
 
   const renderLoadingView = () => (
     <LoadingContainer
-      className="products-loader-container"
+      // className="products-loader-container"
       data-testid="loader"
     >
       <ReactLoading type={"bars"} color={"#000000"} height={50} width={50} />
@@ -261,22 +260,7 @@ const GenderChart = (props) => {
     );
   };
 
-  const renderFailureView = (isDarkMood) => (
-    <div className="no-search-result">
-      <h1 className="failed-home-page">Oops! Something Went Wrong</h1>
-      <p className="not-found-search-result-paragraph">
-        We are having some trouble to complete your request.
-        <br /> Please try again
-      </p>
-      <button
-        className="not-found-search-result-button"
-        type="button"
-        // onClick={getLeaderboardData}
-      >
-        Retry
-      </button>
-    </div>
-  );
+  const renderFailureView = () => <FailureCase updateApi={updateApi} />;
 
   const renderLeaderboard = () => {
     const { status } = apiResponse;

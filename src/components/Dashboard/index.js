@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 
 import SideBar from "../SideBar";
 import Header from "../Header";
 import TotalDebitCredite from "../TotalDebitCredite";
-import LastThreeTransctionsFunction from "../LastThreeTransctions";
+import LastThreeTransactionsFunction from "../LastThreeTransactions";
 import GenderChart from "../GenderChart";
-// import LastSevenDaysTransction from "../LastSevenDaysTransction";
+// import LastSevenDaysTransaction from "../LastSevenDaysTransaction";
 
 import {
   DashboardMainContainer,
   BodyContainer,
   BodyMainContainer,
-  LastTransction,
+  LastTransaction,
   BarChartContainer,
 } from "./styledComponents";
 
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   if (jwtToken !== undefined) {
     return (
-      <TransctionContext.Consumer>
+      <TransactionContext.Consumer>
         {(value) => {
           const { selectOption, onChangeSelectOption } = value;
           if (selectOption !== "DASHBOARD") {
@@ -53,29 +53,28 @@ const Dashboard = () => {
               <BodyMainContainer>
                 <Header updateApi={callTransactionsUpdate} />
                 <BodyContainer>
-                  <div>
-                    <TotalDebitCredite
-                      isUserAdmin={jwtToken === "3"}
-                      callApi={callApi}
-                    />
-                  </div>
-                  <LastTransction>Last Transaction</LastTransction>
-                  <LastThreeTransctionsFunction
+                  <TotalDebitCredite
+                    isUserAdmin={jwtToken === "3"}
+                    callApi={callApi}
+                  />
+
+                  <LastTransaction>Last Transaction</LastTransaction>
+                  <LastThreeTransactionsFunction
                     isUserAdmin={jwtToken === "3"}
                     callApi={callApi}
                     lastThreeTransactions={callTransactionsUpdate}
                   />
-                  <LastTransction>Debit & Credit Overview</LastTransction>
+                  <LastTransaction>Debit & Credit Overview</LastTransaction>
                   <BarChartContainer>
                     <GenderChart callApi={callApi} />
-                    {/* <LastSevenDaysTransction /> */}
+                    {/* <LastSevenDaysTransaction /> */}
                   </BarChartContainer>
                 </BodyContainer>
               </BodyMainContainer>
             </DashboardMainContainer>
           );
         }}
-      </TransctionContext.Consumer>
+      </TransactionContext.Consumer>
     );
   }
   return null;

@@ -50,7 +50,7 @@ export const ProfileContainer = styled.div`
   }
   @media screen and (max-width: 768px) {
     margin-left: 15px;
-    width: 97vw;
+    width: 94vw;
     // max-height: 144vw;
   }
 `;
@@ -80,7 +80,7 @@ export const ProfileImageContainer = styled.div`
   }
 `;
 
-export const AddTransctionInputContainer = styled.div`
+export const AddTransactionInputContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -95,7 +95,7 @@ export const AddTransctionInputContainer = styled.div`
   }
 `;
 
-export const AddTransctionLabel = styled.label`
+export const AddTransactionLabel = styled.label`
   color: #505887;
   font-family: Inter;
   font-size: 16px;
@@ -104,7 +104,7 @@ export const AddTransctionLabel = styled.label`
   line-height: normal;
 `;
 
-export const AddTransctionNameInput = styled.input`
+export const AddTransactionNameInput = styled.input`
   width: 27vw;
   height: 15px;
   flex-shrink: 0;
@@ -131,4 +131,4 @@ export const DetailsContainer = styled.div`
   overflow: auto;
 `;
 
-// export const TransctionBodyContainer = styled.div``;
+// export const TransactionBodyContainer = styled.div``;

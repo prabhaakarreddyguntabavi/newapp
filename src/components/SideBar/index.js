@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 
 import {
   SideBarMainContainer,
@@ -110,7 +110,7 @@ const SideBar = () => {
   };
 
   return (
-    <TransctionContext.Consumer>
+    <TransactionContext.Consumer>
       {(value) => {
         const {
           selectOption,
@@ -130,7 +130,7 @@ const SideBar = () => {
                 to="/"
                 onClick={() => {
                   onChangeSelectOption("DASHBOARD");
-                  onChangeTransactionOption("ALLTRNSACTION");
+                  onChangeTransactionOption("ALLTRANSACTION");
                 }}
               >
                 <EachTextContainer>
@@ -180,7 +180,7 @@ const SideBar = () => {
                 to="/profile"
                 onClick={() => {
                   onChangeSelectOption("PROFILE");
-                  onChangeTransactionOption("ALLTRNSACTION");
+                  onChangeTransactionOption("ALLTRANSACTION");
                 }}
               >
                 <EachTextContainer>
@@ -271,7 +271,7 @@ const SideBar = () => {
           </SideBarMainContainer>
         );
       }}
-    </TransctionContext.Consumer>
+    </TransactionContext.Consumer>
   );
 };
 

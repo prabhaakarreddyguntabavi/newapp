@@ -2,21 +2,23 @@ import { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
 import Cookies from "js-cookie";
 
-// import TransctionContext from "../../context/TransctionContext";
+import FailureCase from "../FailureCase";
+
+// import TransactionContext from "../../context/TransactionContext";
 
 import {
   CreditContainer,
   HeadingAmount,
   Paragraph,
   CreditImage,
-  CrediteTextContainer,
+  CreditTextContainer,
   ImageContainer,
   AmountDetailsContainer,
   DebitContainer,
   DebitTextContainer,
   DebitImageContainer,
   DebitHeadingAmount,
-  DeditImage,
+  DebitImage,
   LoadingContainer,
 } from "./styledComponents";
 
@@ -27,8 +29,10 @@ const apiStatusConstants = {
   failure: "FAILURE",
 };
 
-const TotalDebitCredite = (props) => {
+const TotalDebitCredit = (props) => {
   const { isUserAdmin, callApi } = props;
+
+  const [callBack, updateApi] = useState("");
 
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
@@ -113,18 +117,18 @@ const TotalDebitCredite = (props) => {
     };
 
     getLeaderboardData();
-  }, [callApi]);
+  }, [callApi, callBack]);
 
   const renderSuccessView = () => {
     return (
       <>
         <CreditContainer>
-          <CrediteTextContainer>
+          <CreditTextContainer>
             <HeadingAmount>
               $ {apiResponse.data[apiResponse.data.length - 2].sum}
             </HeadingAmount>
             <Paragraph>Credit</Paragraph>
-          </CrediteTextContainer>
+          </CreditTextContainer>
           <ImageContainer>
             <CreditImage
               src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705735242/Group_itp5q8.png"
@@ -141,7 +145,7 @@ const TotalDebitCredite = (props) => {
             <Paragraph>Debit</Paragraph>
           </DebitTextContainer>
           <DebitImageContainer>
-            <DeditImage
+            <DebitImage
               src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705741143/Group_1_x8rnbj.png"
               alt="group"
             />
@@ -160,31 +164,7 @@ const TotalDebitCredite = (props) => {
     </LoadingContainer>
   );
 
-  const renderFailureView = (isDarkMood) => (
-    <div className="no-search-result">
-      <img
-        className="not-found-search-result"
-        src={
-          isDarkMood
-            ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-            : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
-        }
-        alt="failure view"
-      />
-      <h1 className="failed-home-page">Oops! Something Went Wrong</h1>
-      <p className="not-found-search-result-paragraph">
-        We are having some trouble to complete your request.
-        <br /> Please try again
-      </p>
-      <button
-        className="not-found-search-result-button"
-        type="button"
-        // onClick={getLeaderboardData}
-      >
-        Retry
-      </button>
-    </div>
-  );
+  const renderFailureView = () => <FailureCase updateApi={updateApi} />;
 
   const renderLeaderboard = () => {
     const { status } = apiResponse;
@@ -203,4 +183,4 @@ const TotalDebitCredite = (props) => {
   return <AmountDetailsContainer>{renderLeaderboard()}</AmountDetailsContainer>;
 };
 
-export default TotalDebitCredite;
+export default TotalDebitCredit;

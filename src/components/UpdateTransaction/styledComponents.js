@@ -10,23 +10,23 @@ export const HeaderMainContainer = styled.div`
   height: 35px;
 `;
 
-export const AddTransactionButton = styled.button`
-  display: flex;
-  padding: 8px 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 12px;
-  background: #2d60ff;
-  color: #fff;
-  text-align: center;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  border-width: 0px;
-`;
+// export const AddTransactionButton = styled.button`
+//   display: flex;
+//   padding: 8px 12px;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 4px;
+//   border-radius: 12px;
+//   background: #2d60ff;
+//   color: #fff;
+//   text-align: center;
+//   font-family: Inter;
+//   font-size: 15px;
+//   font-style: normal;
+//   font-weight: 500;
+//   line-height: normal;
+//   border-width: 0px;
+// `;
 
 export const ButtonImage = styled.img`
   width: 20px;
@@ -42,7 +42,7 @@ export const ButtonText = styled.p`
   line-height: normal;
 `;
 
-export const AddTransctionMainContainer = styled.div`
+export const AddTransactionMainContainer = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -51,7 +51,7 @@ export const AddTransctionMainContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-export const AddTransctionContainer = styled.div`
+export const AddTransactionContainer = styled.div`
   width: 466px;
   height: 700px;
   flex-shrink: 0;
@@ -64,7 +64,7 @@ export const AddTransctionContainer = styled.div`
   }
 `;
 
-export const AddTransctionButton = styled.button`
+export const AddTransactionButton = styled.button`
   display: flex;
   width: 90%;
   padding: 8px 16px;
@@ -87,7 +87,7 @@ export const AddTransctionButton = styled.button`
   line-height: 20px; /* 142.857% */
 `;
 
-export const AddTransctionTextContainer = styled.div`
+export const AddTransactionTextContainer = styled.div`
   display: flex;
 `;
 
@@ -97,7 +97,7 @@ export const HeadingTextContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const AddTransctionHeading = styled.h1`
+export const AddTransactionHeading = styled.h1`
   color: #333b69;
   font-family: Inter;
   font-size: 20px;
@@ -106,7 +106,7 @@ export const AddTransctionHeading = styled.h1`
   line-height: 28px; /* 140% */
 `;
 
-export const AddTransctionParagraph = styled.p`
+export const AddTransactionParagraph = styled.p`
   width: 289px;
   color: #505887;
   font-family: Inter;
@@ -117,7 +117,7 @@ export const AddTransctionParagraph = styled.p`
   margin-top: 8px;
 `;
 
-export const AddTransctionCloseImage = styled.img`
+export const AddTransactionCloseImage = styled.img`
   width: 24px;
   height: 24px;
   flex-shrink: 0;
@@ -126,7 +126,7 @@ export const AddTransctionCloseImage = styled.img`
   margin-right: 24px;
 `;
 
-export const AddTransctionInputContainer = styled.div`
+export const AddTransactionInputContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -139,7 +139,7 @@ export const AddTransctionInputContainer = styled.div`
   }
 `;
 
-export const AddTransctionLabel = styled.label`
+export const AddTransactionLabel = styled.label`
   color: #505887;
   font-family: Inter;
   font-size: 16px;
@@ -148,7 +148,7 @@ export const AddTransctionLabel = styled.label`
   line-height: normal;
 `;
 
-export const AddTransctionNameInput = styled.input`
+export const AddTransactionNameInput = styled.input`
   width: 390px;
   height: 15px;
   flex-shrink: 0;
@@ -161,7 +161,7 @@ export const AddTransctionNameInput = styled.input`
   }
 `;
 
-export const SelectTransctionType = styled.select`
+export const SelectTransactionType = styled.select`
   width: 418px;
   height: 50px;
   flex-shrink: 0;
@@ -180,16 +180,16 @@ export const SelectTransctionType = styled.select`
   }
 `;
 
-export const SelectTransctionOptions = styled.option``;
+export const SelectTransactionOptions = styled.option``;
 
 export const LoadingContainer = styled.div`
   margin: auto;
 `;
 
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
-// export const AddTransctionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;
+// export const AddTransactionContainer = styled.div``;

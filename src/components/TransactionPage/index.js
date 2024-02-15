@@ -6,24 +6,25 @@ import { useNavigate } from "react-router-dom";
 
 import SideBar from "../SideBar";
 import Header from "../Header";
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 import UpdateTransaction from "../UpdateTransaction";
 import DeleteTransaction from "../DeleteTransaction";
+import FailureCase from "../FailureCase";
 
 import {
   TransactionHomePage,
   TransactionTotalBodyContainer,
-  TransctionsContainer,
-  DachTransctionContainer,
-  CrediteDebitImage,
+  TransactionsContainer,
+  DashTransactionContainer,
+  CreditDebitImage,
   TitleParagraph,
-  CategaryParagraph,
-  DateOfTransctionParagraph,
+  CategoryParagraph,
+  DateOfTransactionParagraph,
   EditImage,
   DeleteImage,
   TransactionBodyContainer,
   SelectFilterConditions,
-  TransctionSelectFilter,
+  TransactionSelectFilter,
   SelectAllOption,
   SelectedContainer,
   SelectOption,
@@ -32,18 +33,18 @@ import {
   TransactionCategory,
   TransactionDate,
   TransactionAmount,
-  CrediteAmount,
+  CreditAmount,
   DebitAmount,
   LoadingContainer,
-  HeadingDachTransctionContainer,
+  HeadingDashTransactionContainer,
   NoTransactionsFountHeading,
-  AddTransctionContainer,
-  AddTransctionMainContainer,
-  AddTransctionTextContainer,
+  AddTransactionContainer,
+  AddTransactionMainContainer,
+  AddTransactionTextContainer,
   HeadingTextContainer,
-  AddTransctionHeading,
-  AddTransctionParagraph,
-  AddTransctionCloseImage,
+  AddTransactionHeading,
+  AddTransactionParagraph,
+  AddTransactionCloseImage,
   LogoutContainer,
   AdminProfileContainer,
   TransactionUserName,
@@ -52,7 +53,8 @@ import {
   Div,
   Div2,
   EditDeleteContainer,
-  TransctionParagraphMobile,
+  TransactionParagraphMobile,
+  TextContainer,
 } from "./styledComponents";
 
 const apiStatusConstants = {
@@ -196,17 +198,17 @@ const TransactionPage = () => {
   const renderSuccessView = () => {
     const { data } = apiResponse;
 
-    let transctionsData = data;
+    let transactionsData = data;
     if (filterOption !== "alltransactions") {
-      transctionsData = data.filter(
-        (eachTransctionData) =>
-          eachTransctionData.type.toUpperCase() === filterOption.toUpperCase()
+      transactionsData = data.filter(
+        (eachTransactionData) =>
+          eachTransactionData.type.toUpperCase() === filterOption.toUpperCase()
       );
     }
-    if (transctionsData.length !== 0) {
+    if (transactionsData.length !== 0) {
       return (
         <>
-          <HeadingDachTransctionContainer>
+          <HeadingDashTransactionContainer>
             {jwtToken === "3" ? (
               <TransactionUserName>User Name</TransactionUserName>
             ) : (
@@ -222,28 +224,28 @@ const TransactionPage = () => {
             <TransactionAmount isAdmin={jwtToken === "3"}>
               Amount
             </TransactionAmount>
-          </HeadingDachTransctionContainer>
+          </HeadingDashTransactionContainer>
 
-          {transctionsData.map((eachTransaction, index) => {
+          {transactionsData.map((eachTransaction, index) => {
             const user = allProfileDetails.find(
               (findUser) => findUser.id === eachTransaction.user_id
             );
-            console.log(transctionsData.length - 1 === index);
+            console.log(transactionsData.length - 1 === index);
             return (
-              <DachTransctionContainer
-                length={transctionsData.length - 1 === index}
+              <DashTransactionContainer
+                length={transactionsData.length - 1 === index}
                 key={eachTransaction.id}
               >
                 {jwtToken === "3" ? (
                   <Div2 isAdmin={jwtToken === "3"}>
                     {eachTransaction.type === "credit" ? (
-                      <CrediteDebitImage
+                      <CreditDebitImage
                         isAdmin={jwtToken === "3"}
                         src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_1_idrnjp.png"
                         alt="image"
                       />
                     ) : (
-                      <CrediteDebitImage
+                      <CreditDebitImage
                         isAdmin={jwtToken === "3"}
                         src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_oztkbu.png"
                         alt="image"
@@ -266,13 +268,13 @@ const TransactionPage = () => {
                     <>
                       {" "}
                       {eachTransaction.type === "credit" ? (
-                        <CrediteDebitImage
+                        <CreditDebitImage
                           isAdmin={jwtToken === "3"}
                           src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_1_idrnjp.png"
                           alt="image"
                         />
                       ) : (
-                        <CrediteDebitImage
+                        <CreditDebitImage
                           isAdmin={jwtToken === "3"}
                           src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706182841/Group_73_oztkbu.png"
                           alt="image"
@@ -283,26 +285,26 @@ const TransactionPage = () => {
                     ""
                   )}
 
-                  <div>
+                  <TextContainer>
                     <TitleParagraph>
                       {eachTransaction.transaction_name}
                     </TitleParagraph>
-                    <TransctionParagraphMobile>
+                    <TransactionParagraphMobile>
                       {DateFormate(eachTransaction.date)}
-                    </TransctionParagraphMobile>
-                  </div>
+                    </TransactionParagraphMobile>
+                  </TextContainer>
                 </Div>
-                <CategaryParagraph isAdmin={jwtToken === "3"}>
+                <CategoryParagraph isAdmin={jwtToken === "3"}>
                   {eachTransaction.category}
-                </CategaryParagraph>
-                <DateOfTransctionParagraph>
+                </CategoryParagraph>
+                <DateOfTransactionParagraph>
                   {DateFormate(eachTransaction.date)}
-                </DateOfTransctionParagraph>
+                </DateOfTransactionParagraph>
 
                 {eachTransaction.type === "credit" ? (
-                  <CrediteAmount isAdmin={jwtToken === "3"}>
+                  <CreditAmount isAdmin={jwtToken === "3"}>
                     +${eachTransaction.amount}
-                  </CrediteAmount>
+                  </CreditAmount>
                 ) : (
                   <DebitAmount isAdmin={jwtToken === "3"}>
                     -${eachTransaction.amount}
@@ -323,30 +325,30 @@ const TransactionPage = () => {
                         }
                       >
                         {(close) => (
-                          <AddTransctionMainContainer>
-                            <AddTransctionContainer>
-                              <AddTransctionTextContainer>
+                          <AddTransactionMainContainer>
+                            <AddTransactionContainer>
+                              <AddTransactionTextContainer>
                                 <HeadingTextContainer>
-                                  <AddTransctionHeading>
+                                  <AddTransactionHeading>
                                     Update Transaction
-                                  </AddTransctionHeading>
-                                  <AddTransctionParagraph>
+                                  </AddTransactionHeading>
+                                  <AddTransactionParagraph>
                                     You can update your transaction here
-                                  </AddTransctionParagraph>
+                                  </AddTransactionParagraph>
                                 </HeadingTextContainer>
-                                <AddTransctionCloseImage
+                                <AddTransactionCloseImage
                                   onClick={() => close()}
                                   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706078678/Close_gxeytv.png"
                                   alt="close"
                                 />
-                              </AddTransctionTextContainer>
+                              </AddTransactionTextContainer>
                               <UpdateTransaction
                                 eachTransaction={eachTransaction}
                                 close={close}
                                 callTransactionsUpdate={callTransactionsUpdate}
                               />
-                            </AddTransctionContainer>
-                          </AddTransctionMainContainer>
+                            </AddTransactionContainer>
+                          </AddTransactionMainContainer>
                         )}
                       </Popup>
 
@@ -372,7 +374,7 @@ const TransactionPage = () => {
                     </>
                   )}
                 </EditDeleteContainer>
-              </DachTransctionContainer>
+              </DashTransactionContainer>
             );
           })}
         </>
@@ -386,38 +388,13 @@ const TransactionPage = () => {
   };
 
   const renderLoadingView = () => (
-    <LoadingContainer
-      className="products-loader-container"
-      data-testid="loader"
-    >
+    <LoadingContainer data-testid="loader">
       <ReactLoading type={"bars"} color={"#000000"} height={50} width={50} />
     </LoadingContainer>
   );
 
   const renderFailureView = (isDarkMood) => (
-    <div className="no-search-result">
-      <img
-        className="not-found-search-result"
-        src={
-          isDarkMood
-            ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-            : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
-        }
-        alt="failure view"
-      />
-      <h1 className="failed-home-page">Oops! Something Went Wrong</h1>
-      <p className="not-found-search-result-paragraph">
-        We are having some trouble to complete your request.
-        <br /> Please try again
-      </p>
-      <button
-        className="not-found-search-result-button"
-        type="button"
-        // onClick={getLeaderboardData}
-      >
-        Retry
-      </button>
-    </div>
+    <FailureCase updateApi={updateApi} />
   );
 
   const renderLeaderboard = () => {
@@ -435,7 +412,7 @@ const TransactionPage = () => {
   };
   if (jwtToken !== undefined) {
     return (
-      <TransctionContext.Consumer>
+      <TransactionContext.Consumer>
         {(value) => {
           const {
             transactionOption,
@@ -454,23 +431,23 @@ const TransactionPage = () => {
               <TransactionTotalBodyContainer>
                 <Header updateApi={updateApi} />
                 <SelectFilterConditions>
-                  <TransctionSelectFilter
+                  <TransactionSelectFilter
                     onClick={() => {
-                      onChangeTransactionOption("ALLTRNSACTION");
+                      onChangeTransactionOption("ALLTRANSACTION");
                       onChangeFilter("alltransactions");
                     }}
                   >
                     <SelectAllOption
-                      transactionOption={transactionOption === "ALLTRNSACTION"}
+                      transactionOption={transactionOption === "ALLTRANSACTION"}
                     >
-                      All Transction
+                      All Transaction
                     </SelectAllOption>
                     <SelectedContainer
-                      transactionOption={transactionOption === "ALLTRNSACTION"}
+                      transactionOption={transactionOption === "ALLTRANSACTION"}
                     ></SelectedContainer>
-                  </TransctionSelectFilter>
+                  </TransactionSelectFilter>
 
-                  <TransctionSelectFilter
+                  <TransactionSelectFilter
                     onClick={() => {
                       onChangeTransactionOption("CREDIT");
                       onChangeFilter("credit");
@@ -484,9 +461,9 @@ const TransactionPage = () => {
                     <SelectedCreditContainer
                       transactionOption={transactionOption === "CREDIT"}
                     ></SelectedCreditContainer>
-                  </TransctionSelectFilter>
+                  </TransactionSelectFilter>
 
-                  <TransctionSelectFilter
+                  <TransactionSelectFilter
                     onClick={() => {
                       onChangeTransactionOption("DEBIT");
                       onChangeFilter("debit");
@@ -500,18 +477,18 @@ const TransactionPage = () => {
                     <SelectedCreditContainer
                       transactionOption={transactionOption === "DEBIT"}
                     ></SelectedCreditContainer>
-                  </TransctionSelectFilter>
+                  </TransactionSelectFilter>
                 </SelectFilterConditions>
                 <TransactionBodyContainer>
-                  <TransctionsContainer>
+                  <TransactionsContainer>
                     {renderLeaderboard()}
-                  </TransctionsContainer>
+                  </TransactionsContainer>
                 </TransactionBodyContainer>
               </TransactionTotalBodyContainer>
             </TransactionHomePage>
           );
         }}
-      </TransctionContext.Consumer>
+      </TransactionContext.Consumer>
     );
   }
   return null;

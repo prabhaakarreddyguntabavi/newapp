@@ -73,7 +73,7 @@ export const AddTransctionMainContainer = styled.div`
 
 export const AddTransctionContainer = styled.form`
   width: 466px;
-  height: 80vh;
+  // height: 80vh;
   flex-shrink: 0;
   border-radius: 16px;
   background: #fff;
@@ -83,7 +83,7 @@ export const AddTransctionContainer = styled.form`
 
   @media screen and (max-width: 768px) {
     width: 90vw;
-    height: 75vh;
+    // height: 75vh;
   }
 `;
 
@@ -149,8 +149,8 @@ export const AddTransctionCloseImage = styled.img`
   height: 24px;
   flex-shrink: 0;
   margin-left: auto;
-  margin-top: 24px;
-  margin-right: 24px;
+  // margin-top: 15px;
+  margin-right: 10px;
 `;
 
 export const AddTransctionInputContainer = styled.div`
@@ -283,3 +283,8 @@ export const ErrorMessageParagraph = styled.div`
 `;
 
 export const ErrorMessage = styled.p``;
+
+export const NotificationMessage = styled.p`
+  font-size: 10px;
+  margin: 0px;
+`;

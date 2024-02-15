@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-import TransctionContext from "../../context/TransctionContext";
+import TransactionContext from "../../context/TransactionContext";
 
 import {
   LoginLabel,
@@ -38,7 +38,7 @@ const LoginForm = () => {
   const [emailId, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [onEnterEmailDict, setEmailDict] = useState({
+  const [userDict, setEmailDict] = useState({
     email: "",
     password: "",
     userId: 0,
@@ -64,17 +64,11 @@ const LoginForm = () => {
       setErrorMessage("Please Enter Email");
     } else if (password === "") {
       setErrorMessage("Please Enter Password");
-    } else if (
-      onEnterEmailDict.email !== emailId ||
-      onEnterEmailDict.password !== password
-    ) {
+    } else if (userDict.email !== emailId || userDict.password !== password) {
       setErrorMessage("Please Enter Valid Email or Password");
-    } else if (
-      onEnterEmailDict.email === emailId ||
-      onEnterEmailDict.password === password
-    ) {
+    } else if (userDict.email === emailId || userDict.password === password) {
       setErrorMessage("");
-      Cookies.set("jwt_token", onEnterEmailDict.userId, {
+      Cookies.set("jwt_token", userDict.userId, {
         expires: 30,
       });
       navigate("/");
@@ -88,19 +82,17 @@ const LoginForm = () => {
     navigate("/");
   }
   return (
-    <TransctionContext.Consumer>
+    <TransactionContext.Consumer>
       {(value) => {
         return (
           <LoginContainer>
-            <LoginFormContainer className="form-container">
+            <LoginFormContainer>
               <LogoImage
                 src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1705580146/Frame_507_ba197a.png"
                 alt="website logo"
               />
               <InputContainer>
-                <LoginLabel className="input-label" htmlFor="emailId">
-                  Email
-                </LoginLabel>
+                <LoginLabel htmlFor="emailId">Email</LoginLabel>
                 <EmailInput
                   type="email"
                   id="emailId"
@@ -130,7 +122,7 @@ const LoginForm = () => {
           </LoginContainer>
         );
       }}
-    </TransctionContext.Consumer>
+    </TransactionContext.Consumer>
   );
 };
 

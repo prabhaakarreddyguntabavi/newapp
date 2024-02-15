@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const CreditContainer = styled.div`
   display: flex;
-  width: 39%;
-  height: 145px;
-  padding: 25px 36px;
+  width: 40%;
+  // height: 145px;
+  padding: 9px 36px;
   flex-direction: row;
   align-items: flex-start;
   gap: 8px;
@@ -13,20 +13,26 @@ export const CreditContainer = styled.div`
   background: #fff;
   margin-top: 24px;
   margin-left: 40px;
-  margin-right: 24px;
-  margin-bottom: 24px;
+  // margin-right: 24px;
+  // margin-bottom: 24px;
+  // min-height: 176px;
+  @media screen and (max-width: 1024px) {
+    width: 35%;
+  }
+
   @media screen and (max-width: 768px) {
     margin-top: 10px;
     margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-/right: 10px;
+    // margin-bottom: 10px;
     width: 80%;
-    height: 90px;
+    // height: 90px;
     padding: 25px 30px;
+    // min-height: 100px;
   }
 `;
 
-export const CrediteTextContainer = styled.div`
+export const CreditTextContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -69,7 +75,7 @@ export const CreditImage = styled.img`
 
 export const ImageContainer = styled.div`
   width: 182.431px;
-  height: 161px;
+  // height: 161px;
   // position: absolute;
   // left: 254.039px;
   aline-self: flex-end;
@@ -80,10 +86,11 @@ export const ImageContainer = styled.div`
 
 export const AmountDetailsContainer = styled.div`
   display: flex;
-  height: 220px;
+  // height: 220px;
+  width: 98%;
 
   @media screen and (max-width: 1024px) {
-    width: 80vw;
+    width: 100%;
   }
 
   @media screen and (max-width: 768px) {
@@ -95,9 +102,9 @@ export const AmountDetailsContainer = styled.div`
 
 export const DebitContainer = styled.div`
   display: flex;
-  width: 38%;
-  height: 145px;
-  padding: 25px 40px;
+  width: 40%;
+  // height: 145px;
+  padding: 9px 40px;
   // flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -107,13 +114,17 @@ export const DebitContainer = styled.div`
   margin-top: 24px;
   margin-left: 40px;
   margin-right: 24px;
+  @media screen and (max-width: 1024px) {
+    width: 35%;
+  }
+
   @media screen and (max-width: 768px) {
     margin-top: 5px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     width: 80%;
-    height: 90px;
+    // height: 90px;
     padding: 25px 30px;
   }
 `;
@@ -122,7 +133,7 @@ export const DebitTextContainer = styled.div``;
 
 export const DebitImageContainer = styled.div`
   width: 187.807px;
-  height: 154.736px;
+  // height: 154.736px;
   aline-self: flex-end;
   margin-left: auto;
   // position: absolute;
@@ -140,7 +151,7 @@ export const DebitHeadingAmount = styled.h1`
   margin-bottom: 10px;
 `;
 
-export const DeditImage = styled.img`
+export const DebitImage = styled.img`
   width: 187.807px;
   height: 154.736px;
 
@@ -154,18 +165,18 @@ export const LoadingContainer = styled.div`
   margin: auto;
 `;
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``
 
-// export const DeditImage = styled.img``
+// export const DebitImage = styled.img``

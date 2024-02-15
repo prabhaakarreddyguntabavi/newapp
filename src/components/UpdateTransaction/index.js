@@ -5,12 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import ReactLoading from "react-loading";
 
 import {
-  AddTransctionButton,
-  AddTransctionInputContainer,
-  AddTransctionLabel,
-  AddTransctionNameInput,
-  SelectTransctionType,
-  SelectTransctionOptions,
+  AddTransactionButton,
+  AddTransactionInputContainer,
+  AddTransactionLabel,
+  AddTransactionNameInput,
+  SelectTransactionType,
+  SelectTransactionOptions,
 } from "./styledComponents";
 
 // const apiStatusConstants = {
@@ -45,7 +45,7 @@ const UpdateTransaction = (props) => {
     data: null,
   });
 
-  const [addTransctionStatus, updateTransction] = useState(false);
+  const [addTransactionStatus, updateTransaction] = useState(false);
 
   // const [errorMessage, updateErrorMessage] = useState(false);
 
@@ -66,7 +66,11 @@ const UpdateTransaction = (props) => {
   const [date, addDate] = useState(eachTransaction.date);
 
   const AddNameFunction = (event) => {
-    addName(event.target.value);
+    if (event.target.value.length >= 30) {
+      window.alert("Username shouldn't exceed 30 characters");
+    } else {
+      addName(event.target.value);
+    }
   };
 
   const addTypeFunction = (event) => {
@@ -88,7 +92,7 @@ const UpdateTransaction = (props) => {
   const jwtToken = Cookies.get("jwt_token");
 
   const getLeaderboardData = async () => {
-    updateTransction("inprogress");
+    updateTransaction("inprogress");
 
     setApiResponse({
       status: "",
@@ -144,98 +148,101 @@ const UpdateTransaction = (props) => {
 
   return (
     <>
-      <AddTransctionInputContainer>
-        <AddTransctionLabel htmlFor="addtransctionname">
-          Transaction Name
-        </AddTransctionLabel>
-        <AddTransctionNameInput
+      <AddTransactionInputContainer>
+        <AddTransactionLabel htmlFor="addtransactionname">
+          Transaction Name*
+        </AddTransactionLabel>
+        <AddTransactionNameInput
           required="required"
           type="text"
-          id="addtransctionname"
+          id="addtransactionname"
           value={name}
           onChange={AddNameFunction}
           placeholder="Enter Name"
           maxLength={30}
         />
-      </AddTransctionInputContainer>
+      </AddTransactionInputContainer>
 
-      <AddTransctionInputContainer>
-        <AddTransctionLabel htmlFor="transctionType">
-          Transaction Type
-        </AddTransctionLabel>
-        <SelectTransctionType
+      <AddTransactionInputContainer>
+        <AddTransactionLabel htmlFor="transactionType">
+          Transaction Type*
+        </AddTransactionLabel>
+        <SelectTransactionType
           required="required"
           placeholder="Select Transaction Type "
-          id="transctionType"
+          id="transactionType"
           value={type}
           onChange={addTypeFunction}
         >
-          <SelectTransctionOptions value="credit">
+          <SelectTransactionOptions value="credit">
             Credit
-          </SelectTransctionOptions>
-          <SelectTransctionOptions value="debit">Debit</SelectTransctionOptions>
-        </SelectTransctionType>
-      </AddTransctionInputContainer>
+          </SelectTransactionOptions>
+          <SelectTransactionOptions value="debit">
+            Debit
+          </SelectTransactionOptions>
+        </SelectTransactionType>
+      </AddTransactionInputContainer>
 
-      <AddTransctionInputContainer>
-        <AddTransctionLabel htmlFor="transctionCategory">
-          Category
-        </AddTransctionLabel>
-        <SelectTransctionType
+      <AddTransactionInputContainer>
+        <AddTransactionLabel htmlFor="transactionCategory">
+          Category*
+        </AddTransactionLabel>
+        <SelectTransactionType
           required="required"
           placeholder="Select"
-          id="transctionCategory"
+          id="transactionCategory"
           value={category}
           onChange={addCategoryFunction}
         >
-          <SelectTransctionOptions value="Shopping">
+          <SelectTransactionOptions value="Shopping">
             Shopping
-          </SelectTransctionOptions>
-          <SelectTransctionOptions value="Service">
+          </SelectTransactionOptions>
+          <SelectTransactionOptions value="Service">
             Service
-          </SelectTransctionOptions>
-          <SelectTransctionOptions value="Transfer">
+          </SelectTransactionOptions>
+          <SelectTransactionOptions value="Transfer">
             Transfer
-          </SelectTransctionOptions>
-        </SelectTransctionType>
-      </AddTransctionInputContainer>
+          </SelectTransactionOptions>
+        </SelectTransactionType>
+      </AddTransactionInputContainer>
 
-      <AddTransctionInputContainer>
-        <AddTransctionLabel htmlFor="addtransctionamount">
-          Amount
-        </AddTransctionLabel>
-        <AddTransctionNameInput
+      <AddTransactionInputContainer>
+        <AddTransactionLabel htmlFor="addtransactionamount">
+          Amount*
+        </AddTransactionLabel>
+        <AddTransactionNameInput
           required="required"
           type="number"
-          id="addtransctionamount"
+          id="addtransactionamount"
           value={amount}
           onChange={AddAmountFunction}
           placeholder="Enter Your Amount"
         />
-      </AddTransctionInputContainer>
+      </AddTransactionInputContainer>
 
-      <AddTransctionInputContainer>
-        <AddTransctionLabel htmlFor="addtransctionamount">
-          Date
-        </AddTransctionLabel>
-        <AddTransctionNameInput
+      <AddTransactionInputContainer>
+        <AddTransactionLabel htmlFor="addtransactionamount">
+          Date*
+        </AddTransactionLabel>
+        <AddTransactionNameInput
+          readOnly
           required="required"
           type="datetime-local"
-          id="addtransctionamount"
+          id="addtransactionamount"
           value={setTimeFormate(date)}
           onChange={addDateFunction}
           placeholder="Select Date"
         />
-      </AddTransctionInputContainer>
+      </AddTransactionInputContainer>
 
-      <AddTransctionButton
+      <AddTransactionButton
         type="button"
         onClick={() => {
           getLeaderboardData();
         }}
-        disabled={addTransctionStatus === "inprogress"}
+        disabled={addTransactionStatus === "inprogress"}
       >
-        {addTransctionStatus === "inprogress" ? (
+        {addTransactionStatus === "inprogress" ? (
           <ReactLoading
             type={"bars"}
             color={"#ffffff"}
@@ -245,7 +252,7 @@ const UpdateTransaction = (props) => {
         ) : (
           "Update Transaction "
         )}
-      </AddTransctionButton>
+      </AddTransactionButton>
       {showError && (
         <ErrorPopup message={apiResponse.errorMsg} onClose={handleCloseError} />
       )}

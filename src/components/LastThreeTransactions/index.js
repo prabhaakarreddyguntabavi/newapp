@@ -8,25 +8,25 @@ import UpdateTransaction from "../UpdateTransaction";
 import DeleteTransaction from "../DeleteTransaction";
 
 import {
-  TransctionsContainer,
-  DachTransctionContainer,
+  TransactionsContainer,
+  DachTransactionContainer,
   CrediteDebitImage,
   TitleParagraph,
   CategaryParagraph,
-  DateOfTransctionParagraph,
+  DateOfTransactionParagraph,
   EditImage,
   DeleteImage,
   CrediteAmount,
   DebitAmount,
   LoadingContainer,
   NoTransactionsFountHeading,
-  AddTransctionContainer,
-  AddTransctionMainContainer,
-  AddTransctionTextContainer,
+  AddTransactionContainer,
+  AddTransactionMainContainer,
+  AddTransactionTextContainer,
   HeadingTextContainer,
-  AddTransctionHeading,
-  AddTransctionParagraph,
-  AddTransctionCloseImage,
+  AddTransactionHeading,
+  AddTransactionParagraph,
+  AddTransactionCloseImage,
   LogoutContainer,
   AdminProfileContainer,
   UserProfileDetails,
@@ -34,7 +34,7 @@ import {
   Div,
   Div2,
   EditDeleteContainer,
-  TransctionParagraphMobile,
+  TransactionParagraphMobile,
 } from "./styledComponents";
 
 const apiStatusConstants = {
@@ -177,19 +177,19 @@ const TransactionPage = (props) => {
 
   const renderSuccessView = () => {
     const { data } = apiResponse;
-    let transctionsData = data;
+    let transactionsData = data;
 
-    if (transctionsData.length !== 0) {
+    if (transactionsData.length !== 0) {
       return (
         <>
-          {transctionsData.map((eachTransaction, index) => {
+          {transactionsData.map((eachTransaction, index) => {
             const user = allProfileDetails.find(
               (findUser) => findUser.id === eachTransaction.user_id
             );
 
             return (
-              <DachTransctionContainer
-                length={transctionsData.length - 1 === index}
+              <DachTransactionContainer
+                length={transactionsData.length - 1 === index}
                 key={eachTransaction.id}
               >
                 {jwtToken === "3" ? (
@@ -245,17 +245,17 @@ const TransactionPage = (props) => {
                     <TitleParagraph>
                       {eachTransaction.transaction_name}
                     </TitleParagraph>
-                    <TransctionParagraphMobile>
+                    <TransactionParagraphMobile>
                       {DateFormate(eachTransaction.date)}
-                    </TransctionParagraphMobile>
+                    </TransactionParagraphMobile>
                   </div>
                 </Div>
                 <CategaryParagraph>
                   {eachTransaction.category}
                 </CategaryParagraph>
-                <DateOfTransctionParagraph>
+                <DateOfTransactionParagraph>
                   {DateFormate(eachTransaction.date)}
-                </DateOfTransctionParagraph>
+                </DateOfTransactionParagraph>
 
                 {eachTransaction.type === "credit" ? (
                   <CrediteAmount isAdmin={jwtToken === "3"}>
@@ -281,30 +281,30 @@ const TransactionPage = (props) => {
                         }
                       >
                         {(close) => (
-                          <AddTransctionMainContainer>
-                            <AddTransctionContainer>
-                              <AddTransctionTextContainer>
+                          <AddTransactionMainContainer>
+                            <AddTransactionContainer>
+                              <AddTransactionTextContainer>
                                 <HeadingTextContainer>
-                                  <AddTransctionHeading>
+                                  <AddTransactionHeading>
                                     Update Transaction
-                                  </AddTransctionHeading>
-                                  <AddTransctionParagraph>
+                                  </AddTransactionHeading>
+                                  <AddTransactionParagraph>
                                     You can update your transaction here
-                                  </AddTransctionParagraph>
+                                  </AddTransactionParagraph>
                                 </HeadingTextContainer>
-                                <AddTransctionCloseImage
+                                <AddTransactionCloseImage
                                   onClick={() => close()}
                                   src="https://res.cloudinary.com/dwdq2ofjm/image/upload/v1706078678/Close_gxeytv.png"
                                   alt="close"
                                 />
-                              </AddTransctionTextContainer>
+                              </AddTransactionTextContainer>
                               <UpdateTransaction
                                 eachTransaction={eachTransaction}
                                 close={close}
                                 callTransactionsUpdate={callTransactionsUpdate}
                               />
-                            </AddTransctionContainer>
-                          </AddTransctionMainContainer>
+                            </AddTransactionContainer>
+                          </AddTransactionMainContainer>
                         )}
                       </Popup>
 
@@ -330,7 +330,7 @@ const TransactionPage = (props) => {
                     </>
                   )}
                 </EditDeleteContainer>
-              </DachTransctionContainer>
+              </DachTransactionContainer>
             );
           })}
         </>
@@ -392,7 +392,7 @@ const TransactionPage = (props) => {
     }
   };
   if (jwtToken !== undefined) {
-    return <TransctionsContainer>{renderLeaderboard()}</TransctionsContainer>;
+    return <TransactionsContainer>{renderLeaderboard()}</TransactionsContainer>;
   }
 };
 
