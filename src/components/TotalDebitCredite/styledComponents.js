@@ -17,7 +17,7 @@ export const CreditContainer = styled.div`
   // margin-bottom: 24px;
   // min-height: 176px;
   @media screen and (max-width: 1024px) {
-    width: 35%;
+    width: 38%;
   }
 
   @media screen and (max-width: 768px) {
@@ -25,7 +25,7 @@ export const CreditContainer = styled.div`
     margin-left: 10px;
     margin-/right: 10px;
     // margin-bottom: 10px;
-    width: 80%;
+    width: 90%;
     // height: 90px;
     padding: 25px 30px;
     // min-height: 100px;
@@ -86,17 +86,26 @@ export const ImageContainer = styled.div`
 
 export const AmountDetailsContainer = styled.div`
   display: flex;
-  // height: 220px;
-  width: 98%;
+  width: 90%;
+  //   height: 210px;
+  // padding: 12px 25px 8px 20px;
+  flex-direction: row;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 25px;
+  // background: #fff;
+  // margin-top: 32px;
 
   @media screen and (max-width: 1024px) {
-    width: 100%;
+    width: 84vw;
+    padding: 5px;
   }
 
   @media screen and (max-width: 768px) {
+    margin-top: 0px;
+    width: 96vw;
+    padding: 0px;
     flex-direction: column;
-    height: auto;
-    width: 100%;
   }
 `;
 
@@ -112,10 +121,10 @@ export const DebitContainer = styled.div`
   border-radius: 25px;
   background: #fff;
   margin-top: 24px;
-  margin-left: 40px;
+  margin-left: 20px;
   margin-right: 24px;
   @media screen and (max-width: 1024px) {
-    width: 35%;
+    width: 38%;
   }
 
   @media screen and (max-width: 768px) {
@@ -123,7 +132,7 @@ export const DebitContainer = styled.div`
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    width: 80%;
+    width: 90%;
     // height: 90px;
     padding: 25px 30px;
   }
